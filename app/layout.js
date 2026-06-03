@@ -1,5 +1,6 @@
 import './globals.css';
 import Interactions from '@/components/Interactions';
+import LegalModal from '@/components/LegalModal';
 
 export const metadata = {
   title: 'OHUD Dental | Premier Dental Clinic in Lahore, Pakistan',
@@ -22,6 +23,7 @@ export default function RootLayout({ children }) {
         <div id="cur"></div>
         <div id="ring"></div>
         {children}
+        <LegalModal />
         <Interactions />
       </body>
     </html>

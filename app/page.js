@@ -3,7 +3,6 @@ import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import Img from '@/components/Img';
 import ContactForm from '@/components/ContactForm';
-import LegalModal from '@/components/LegalModal';
 import { team } from '@/lib/services';
 
 const cards = [
@@ -353,7 +352,6 @@ export default function Home() {
       </section>
 
       <Footer base="" />
-      <LegalModal />
     </>
   );
 }

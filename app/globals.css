@@ -9,7 +9,7 @@
   --sans:'Outfit',system-ui,sans-serif;
   --ease:cubic-bezier(0.16,1,0.3,1);
 }
-html{scroll-behavior:smooth;scroll-padding-top:92px;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;scroll-padding-top:92px;-webkit-text-size-adjust:100%;overflow-x:hidden}
 body{font-family:var(--sans);color:#33444E;background:var(--white);overflow-x:hidden}
 body.mlock{overflow:hidden}
 ::-webkit-scrollbar{width:3px}
@@ -509,9 +509,11 @@ footer{background:#0C151D;padding:70px 5.5% 44px}
   .svc-rgrid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:768px){
-  /* nav */
-  nav{height:72px;padding:0 5%}
-  nav.s{height:68px}
+  /* nav — constant height + no backdrop blur on mobile (cheap, no scroll distortion) */
+  nav{height:70px;padding:0 5%;transition:background 0.35s var(--ease),box-shadow 0.35s var(--ease)}
+  nav.s,nav.solid{height:70px;backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(21,35,46,0.98)}
+  /* reveal animations slide vertically on mobile so nothing pokes past the viewport edge */
+  .rl,.rr{transform:translateY(30px)}
   .nlogo{gap:10px}
   .nlm{width:50px;height:50px}
   .nlm svg{width:42px;height:48px}

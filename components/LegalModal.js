@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 
 export default function LegalModal() {
   const [active, setActive] = useState(null);
@@ -102,7 +103,7 @@ export default function LegalModal() {
               <li><strong>Choose braces if:</strong> you have a complex case, want a lower cost, or prefer a fix-and-forget option.</li>
               <li><strong>Choose aligners if:</strong> appearance matters to you, you&apos;ll wear them consistently, and your case is mild to moderate.</li>
             </ul>
-            <p style={{ marginTop: '24px' }}><strong>Ready for a straighter smile?</strong> Explore our <a href="/treatments/orthodontics/">braces &amp; aligners page</a> or <a href="#contact" onClick={close}>book a free assessment</a>.</p>
+            <p style={{ marginTop: '24px' }}><strong>Ready for a straighter smile?</strong> Explore our <Link href="/treatments/orthodontics/" onClick={close}>braces &amp; aligners page</Link> or <a href="#contact" onClick={close}>book a free assessment</a>.</p>
           </div>
         </div>
 
@@ -117,7 +118,7 @@ export default function LegalModal() {
             <p>Charcoal and abrasive home remedies can scratch and thin your enamel, ironically making teeth look more yellow long-term. Unregulated kits can also irritate gums and cause uneven results.</p>
             <h3>Professional Whitening Done Right</h3>
             <p>Dentist-supervised whitening uses clinically proven gels with controlled concentrations. Your gums are protected, your sensitivity is managed, and the results are even, natural, and dramatically brighter.</p>
-            <p style={{ marginTop: '24px' }}><strong>Want a safe, brighter smile?</strong> Visit our <a href="/treatments/teeth-whitening/">teeth whitening page</a> or <a href="#contact" onClick={close}>book a consultation</a>.</p>
+            <p style={{ marginTop: '24px' }}><strong>Want a safe, brighter smile?</strong> Visit our <Link href="/treatments/teeth-whitening/" onClick={close}>teeth whitening page</Link> or <a href="#contact" onClick={close}>book a consultation</a>.</p>
           </div>
         </div>
 

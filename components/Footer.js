@@ -2,7 +2,8 @@ import Link from 'next/link';
 import Logo from './Logo';
 
 export default function Footer({ base = '' }) {
-  const a = (hash) => `${base}#${hash}`;
+  // Rendered via Link (not <a>) so Next.js prefixes the basePath on static hosts like GitHub Pages.
+  const a = (hash) => (base ? `/#${hash}` : `#${hash}`);
   return (
     <footer>
       <div className="foot-in">
@@ -31,16 +32,16 @@ export default function Footer({ base = '' }) {
             <Link href="/treatments/pediatric-dentistry/">Children&apos;s Dentistry</Link>
             <Link href="/treatments/emergency-care/">Emergency Dentistry</Link>
             <Link href="/treatments/gum-treatment/">Gum Treatment</Link>
-            <a href={a('technology')}>Our Technology</a>
+            <Link href={a('technology')}>Our Technology</Link>
           </div>
           <div className="fcol">
             <h5>Clinic</h5>
-            <a href={a('about')}>About Us</a>
+            <Link href={a('about')}>About Us</Link>
             <Link href="/team/">Our Team</Link>
-            <a href={a('blog')}>Blog</a>
-            <a href={a('faq')}>FAQ&apos;s</a>
-            <a href={a('process')}>Your Visit</a>
-            <a href={a('contact')}>Contact Us</a>
+            <Link href={a('blog')}>Blog</Link>
+            <Link href={a('faq')}>FAQ&apos;s</Link>
+            <Link href={a('process')}>Your Visit</Link>
+            <Link href={a('contact')}>Contact Us</Link>
           </div>
         </div>
         <div className="foot-bot">
