@@ -8,12 +8,30 @@ export default function Interactions() {
   useEffect(() => {
     const cleanups = [];
     const on = (el, ev, fn, opts) => { el.addEventListener(ev, fn, opts); cleanups.push(() => el.removeEventListener(ev, fn, opts)); };
+    // Touch devices skip the cursor, 3D tilt and parallax — keeps scrolling smooth on mobile.
+    const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    /* MOBILE MENU */
+    const burger = document.getElementById('nburger');
+    const mmenu = document.getElementById('mmenu');
+    if (burger && mmenu) {
+      const setOpen = (open) => {
+        mmenu.classList.toggle('open', open);
+        burger.classList.toggle('open', open);
+        document.body.classList.toggle('mlock', open);
+        burger.setAttribute('aria-expanded', String(open));
+        burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      };
+      on(burger, 'click', () => setOpen(!mmenu.classList.contains('open')));
+      mmenu.querySelectorAll('a').forEach((el) => on(el, 'click', () => setOpen(false)));
+      cleanups.push(() => setOpen(false));
+    }
 
     /* CURSOR */
     const cur = document.getElementById('cur');
     const ring = document.getElementById('ring');
     let raf;
-    if (cur && ring) {
+    if (fine && cur && ring) {
       let mx = 0, my = 0, rx = 0, ry = 0;
       on(document, 'mousemove', (e) => { mx = e.clientX; my = e.clientY; cur.style.left = mx + 'px'; cur.style.top = my + 'px'; });
       const anim = () => { rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; raf = requestAnimationFrame(anim); };
@@ -37,7 +55,7 @@ export default function Interactions() {
     /* PARTICLES */
     const ptcl = document.getElementById('ptcl');
     if (ptcl && !ptcl.childElementCount) {
-      for (let i = 0; i < 24; i++) {
+      for (let i = 0; i < (fine ? 24 : 10); i++) {
         const p = document.createElement('div');
         p.className = 'pt';
         const s = Math.random() * 6 + 3;
@@ -47,8 +65,8 @@ export default function Interactions() {
       }
     }
 
-    /* 3D TILT */
-    document.querySelectorAll('.hcard, .hstat, .csvc, .pstep, .pcard, .mcard, .tcard, .bcard, .apoint').forEach((el) => {
+    /* 3D TILT (desktop pointers only) */
+    if (fine) document.querySelectorAll('.hcard, .hstat, .csvc, .pstep, .pcard, .mcard, .tcard, .bcard, .apoint').forEach((el) => {
       const move = (e) => {
         const r = el.getBoundingClientRect();
         const rx = ((e.clientY - r.top - r.height / 2) / (r.height / 2)) * -12;
@@ -60,9 +78,9 @@ export default function Interactions() {
       on(el, 'mousemove', move); on(el, 'mouseleave', leave);
     });
 
-    /* HERO 3D PARALLAX */
+    /* HERO 3D PARALLAX (desktop pointers only) */
     const heroSection = document.getElementById('home');
-    if (heroSection) {
+    if (fine && heroSection) {
       const heroLeft = document.querySelector('.hero-inner > div:first-child');
       const heroRight = document.getElementById('hright');
       const hi = document.getElementById('heroImg');
