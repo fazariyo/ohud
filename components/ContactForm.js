@@ -1,65 +1,57 @@
 'use client';
 import { useState } from 'react';
+import { waLink, brand } from '@/lib/brand';
 
+// WhatsApp-first booking (Blueprint §3.5, §3.9): minimum fields — name, phone,
+// concern, preferred time — composed into a pre-filled WhatsApp message.
 export default function ContactForm() {
-  const [consent, setConsent] = useState(false);
-  const [sent, setSent] = useState(false);
+  const [f, setF] = useState({ name: '', phone: '', concern: '', when: '' });
+  const set = (k) => (e) => setF({ ...f, [k]: e.target.value });
 
   const submit = (e) => {
     e.preventDefault();
-    if (!consent) { alert('Please check the consent box to proceed.'); return; }
-    setSent(true);
+    const msg =
+      `Assalamu alaikum / Hello — I would like to book an appointment with Ohud Dental.\n\n` +
+      `Name: ${f.name}\n` +
+      `Phone: ${f.phone}\n` +
+      `Concern: ${f.concern || '—'}\n` +
+      `Preferred day/time: ${f.when || '—'}`;
+    window.open(waLink(msg), '_blank', 'noopener');
   };
-
-  if (sent) {
-    return (
-      <div className="cform rr" style={{ textAlign: 'center' }}>
-        <div style={{ fontFamily: 'var(--serif)', fontSize: '28px', color: '#fff', marginBottom: '12px' }}>Thank you! 🦷</div>
-        <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: 1.7 }}>
-          Your appointment request has been received. Our front desk will confirm your slot shortly via call or WhatsApp.
-        </p>
-      </div>
-    );
-  }
 
   return (
     <form className="cform rr" onSubmit={submit}>
       <div className="frow">
-        <div className="fg"><label>First Name *</label><input type="text" placeholder="Ali" required /></div>
-        <div className="fg"><label>Last Name *</label><input type="text" placeholder="Khan" required /></div>
-      </div>
-      <div className="frow">
-        <div className="fg"><label>Email Address</label><input type="email" placeholder="you@email.com" /></div>
-        <div className="fg"><label>Phone Number *</label><input type="tel" placeholder="0300 0000000" required /></div>
-      </div>
-      <div className="frow">
-        <div className="fg"><label>Preferred Date</label><input type="text" placeholder="e.g. Sat afternoon" /></div>
-        <div className="fg"><label>Insurance / Panel</label><input type="text" placeholder="e.g. EFU, Self-pay" /></div>
+        <div className="fg"><label>Your Name *</label><input type="text" placeholder="e.g. Sana" required value={f.name} onChange={set('name')} /></div>
+        <div className="fg"><label>Phone / WhatsApp *</label><input type="tel" placeholder="03xx xxxxxxx" required value={f.phone} onChange={set('phone')} /></div>
       </div>
       <div className="fg">
-        <label>Treatment Needed *</label>
-        <select required defaultValue="">
-          <option value="" disabled>Select a treatment...</option>
-          <option>Check-up &amp; Cleaning</option>
-          <option>Cosmetic Dentistry / Veneers</option>
-          <option>Teeth Whitening</option>
-          <option>Braces / Clear Aligners</option>
-          <option>Dental Implants</option>
-          <option>Root Canal Treatment</option>
-          <option>Children&apos;s Dentistry</option>
-          <option>Dental Emergency / Pain</option>
+        <label>What can we help with?</label>
+        <select value={f.concern} onChange={set('concern')}>
+          <option value="">Choose (optional)…</option>
+          <option>Check-up &amp; cleaning</option>
+          <option>Tooth pain / emergency</option>
+          <option>Root canal</option>
+          <option>Crown / cap</option>
+          <option>Filling</option>
+          <option>Braces / aligners</option>
+          <option>Dental implant</option>
+          <option>Whitening / cosmetic</option>
+          <option>Children’s dentistry</option>
+          <option>Free second opinion</option>
+          <option>Ohud Sisters (female team)</option>
+          <option>Family plan</option>
         </select>
       </div>
-      <div className="fg"><label>Tell Us More</label><textarea placeholder="Describe your concern, preferred timing, or any dental anxiety we should know about..."></textarea></div>
+      <div className="fg"><label>Preferred day / time</label><input type="text" placeholder="e.g. Saturday afternoon" value={f.when} onChange={set('when')} /></div>
 
-      <div className="fg-checkbox">
-        <label className="cb-label">
-          <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} required />
-          <span className="cb-text">By checking this box, you agree to receive appointment confirmations and reminders from OHUD Dental via SMS, WhatsApp, or call. Message and data rates may apply. You can opt out anytime by replying STOP. See our <a href="#" data-legal="privacy-policy">Privacy Policy</a> | <a href="#" data-legal="terms-conditions">Terms &amp; Conditions</a>.</span>
-        </label>
-      </div>
-
-      <button type="submit" className="bteal" style={{ width: '100%', justifyContent: 'center' }}>Request My Appointment →</button>
+      <button type="submit" className="bwa" style={{ width: '100%', justifyContent: 'center' }}>
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.157 5.335 5.493 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.039zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        Continue on WhatsApp →
+      </button>
+      <p style={{ fontSize: '12.5px', fontWeight: 300, color: 'rgba(255,255,255,0.5)', lineHeight: 1.6, marginTop: '16px', textAlign: 'center' }}>
+        This opens WhatsApp with your details ready to send. Prefer to call? {brand.phoneDisplay}
+      </p>
     </form>
   );
 }
