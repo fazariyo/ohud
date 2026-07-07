@@ -24,7 +24,7 @@ export default function FamilyPage() {
           <div className="svc-crumb"><Link href="/">Home</Link><span>/</span>Family Plan</div>
           <div className="svc-tag"><span></span>The Family Anchor</div>
           <h1 className="svc-h1">One clinic. Three generations.</h1>
-          <p className="svc-lead">From your child’s first tooth to your parents’ dentures, one trusted dentist for the whole household — at a fixed annual price that makes caring for everyone affordable.</p>
+          <p className="svc-lead">From your child’s first tooth to your parents’ dentures, one trusted dentist for the whole household — at one clear annual price, explained upfront, that makes caring for everyone affordable.</p>
           <div className="svc-hero-ctas">
             <a href={wa} target="_blank" rel="noopener noreferrer" className="bwa">Join the family plan →</a>
             <Link href="/pricing/" className="bghost">See all prices →</Link>

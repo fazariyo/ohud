@@ -31,7 +31,7 @@ export default function PricingPage() {
           <div className="svc-crumb"><Link href="/">Home</Link><span>/</span>Pricing</div>
           <div className="svc-tag"><span></span>Posted Prices</div>
           <h1 className="svc-h1">Every price. Every procedure. Nothing hidden.</h1>
-          <p className="svc-lead">We publish our prices because trust starts here. The price you see is the price you pay — written, fixed, and honoured.</p>
+          <p className="svc-lead">We publish our prices because trust starts here. The price you see is the price you pay — explained upfront, put in writing, and honoured, with no hidden charges.</p>
           <div className="svc-hero-ctas">
             <a href={wa} target="_blank" rel="noopener noreferrer" className="bwa">Ask about a price →</a>
             <Link href="/second-opinion/" className="bghost">Free second opinion →</Link>

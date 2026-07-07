@@ -15,8 +15,8 @@ import { brand, waDefault, waLink } from '@/lib/brand';
 const heroStats = [
   { icon: 'clock', num: '40+', label: 'Years of experience' },
   { icon: 'heart', num: '5,000+', label: 'Patients cared for' },
-  { icon: 'check', num: 'Fixed', label: 'Prices posted upfront' },
-  { icon: 'scan', num: 'Digital', label: 'X-ray & imaging' },
+  { icon: 'check', num: 'Upfront', label: 'Prices, no hidden charges' },
+  { icon: 'scan', num: 'Digital', label: 'X-ray & advanced equipment' },
 ];
 
 // Six core treatments — names + plain-language descriptions, no prices.
@@ -68,7 +68,7 @@ const journey = [
 const results = [
   { key: 'veneers', label: 'Veneers', before: 5355694, after: 12934843, title: 'Veneers that still look like your own teeth', desc: 'Chips, gaps, and stubborn stains, corrected with thin shells shaped to suit your face — natural, never bulky or “obvious”.' },
   { key: 'whitening', label: 'Whitening', before: 5355715, after: 5622271, title: 'A brighter smile, safely', desc: 'Years of tea, coffee, and paan lifted with dentist-supervised whitening — your gums and enamel protected the whole way.' },
-  { key: 'braces', label: 'Braces & Aligners', before: 8224633, after: 5524021, title: 'Straighter teeth, one fixed price', desc: 'Metal, ceramic, or near-invisible aligners. The full-treatment price is agreed up front and payable in instalments.' },
+  { key: 'braces', label: 'Braces & Aligners', before: 8224633, after: 5524021, title: 'Straighter teeth, one clear price', desc: 'Metal, ceramic, or near-invisible aligners. The full-treatment price is agreed and explained up front, and payable in instalments.' },
   { key: 'implants', label: 'Implants', before: 3768131, after: 6812500, title: 'A missing tooth, replaced for good', desc: 'A permanent, natural-feeling replacement from the root up — with the full, honest cost given in writing before we begin.' },
   { key: 'crowns', label: 'Crowns', before: 5355715, after: 6502305, title: 'Strength restored, shade matched', desc: 'PFM or metal-free zirconia caps that protect a weak tooth and blend in with the teeth beside them.' },
 ];
@@ -101,7 +101,7 @@ const stories = [
 
 // Short homepage FAQ — handles the common objections before booking.
 const faqs = [
-  { q: 'Are your prices really fixed?', a: 'Yes. Every fee is published on this site, and the written quote you receive is the invoice. Nothing is added once treatment begins — including in an emergency.' },
+  { q: 'Will there be any hidden charges?', a: 'No. Every fee is published on this site and explained to you before treatment begins, and the written quote you receive is the invoice. Nothing is added once treatment starts — including in an emergency.' },
   { q: 'Will the treatment hurt?', a: 'We do not start until you are fully numb and comfortable. Most patients feel pressure rather than pain, and if numbing has ever been difficult for you, tell us and we’ll take extra time.' },
   { q: 'Can I get a female dentist?', a: 'Yes. A female dentist and female assistant are available for any patient who would prefer one — just mention it when you book on WhatsApp.' },
   { q: 'How do I book?', a: 'The fastest way is WhatsApp. Message us and our front desk replies within minutes during clinic hours with a time, the exact location, and clear next steps.' },
@@ -133,7 +133,7 @@ export default function Home() {
           <div style={{ maxWidth: '820px' }}>
             <div className="hbadge" id="hbadge"><div className="hbdot"></div><span className="hbtxt">Honest dentistry in Lahore</span></div>
             <h1 className="hh1" id="hh1">Honest dentistry,<br /><em>for smiles that last.</em></h1>
-            <p className="hdesc" id="hdesc" style={{ maxWidth: '560px' }}>The dentist you would send your own family to — calm, careful care at a fair fixed price, explained in plain words before we ever begin. Welcome to Ohud Dental, Lahore.</p>
+            <p className="hdesc" id="hdesc" style={{ maxWidth: '560px' }}>The dentist you would send your own family to — calm, careful care at a fair, clearly explained price, with every cost told to you in plain words before we ever begin. Welcome to Ohud Dental, Lahore.</p>
             <div className="hctas" id="hctas">
               <a href={waDefault} target="_blank" rel="noopener noreferrer" className="bwa">
                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.157 5.335 5.493 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.039zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
@@ -285,7 +285,7 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <p className="faith-note">We state our principles openly because they explain our promises — fair fixed prices, no overtreatment, and disclosed materials. They are how we earn your trust, not a slogan we trade on.</p>
+          <p className="faith-note">We state our principles openly because they explain our promises — clear prices with no hidden charges, no overtreatment, and disclosed materials. They are how we earn your trust, not a slogan we trade on.</p>
         </div>
       </section>
 

@@ -12,12 +12,12 @@ export const metadata = {
 
 const reviews = [
   { name: 'Mariam', area: 'Gulberg', quote: 'What I’ll remember is that they told me I didn’t need the second filling another dentist wanted to do. Who does that? Five stars for honesty alone.' },
-  { name: 'Imran', area: 'Johar Town', quote: 'Fixed price, posted on the website, and that is exactly what I paid. No “DM for price”, no haggling, no surprise charges at the counter.' },
+  { name: 'Imran', area: 'Johar Town', quote: 'The price was posted on the website and explained up front, and that is exactly what I paid. No “DM for price”, no haggling, no surprise charges at the counter.' },
   { name: 'Ayesha', area: 'Model Town', quote: 'My wisdom tooth removal was far calmer than I expected. They explained every step before doing it and checked on me throughout.' },
   { name: 'Shahida', area: 'Garden Town', quote: 'As an older woman I prefer a female dentist. The female dentist and assistant made me comfortable and never rushed me. I’ll keep coming here.' },
   { name: 'Zeeshan', area: 'DHA', quote: 'Booked on WhatsApp, got a reply in minutes, and was seen the next day. Clean clinic, proper sterilisation, fair price. No complaints at all.' },
   { name: 'Nadia', area: 'Faisal Town', quote: 'I was scared scaling would loosen my teeth — a myth they patiently explained away. My gums stopped bleeding within a week.' },
-  { name: 'Komal', area: 'Wapda Town', quote: 'One fixed price for my whole braces treatment, payable in instalments. No “adjustment fee” every single visit like the last place.' },
+  { name: 'Komal', area: 'Wapda Town', quote: 'One clear price for my whole braces treatment, explained up front and payable in instalments. No “adjustment fee” every single visit like the last place.' },
   { name: 'Hassan', area: 'Cantt', quote: 'Brought my father, who is nervous about dentists. They were gentle and unhurried with him. The way they treat elders says everything.' },
   { name: 'Rukhsana', area: 'Township', quote: 'Even when I came in pain as an emergency, they quoted me fairly and in writing before starting. They didn’t take advantage of the situation.' },
 ];

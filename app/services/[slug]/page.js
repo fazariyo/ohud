@@ -15,7 +15,7 @@ export function generateMetadata({ params }) {
   if (!s) return {};
   return {
     title: `${s.title} in Lahore — Price PKR ${s.price}`,
-    description: `${s.title} at Ohud Dental, Lahore. ${s.short} Posted price: PKR ${s.price}. Honest, fixed-price dentistry.`,
+    description: `${s.title} at Ohud Dental, Lahore. ${s.short} Posted price: PKR ${s.price}. Honest dentistry with prices explained upfront and no hidden charges.`,
   };
 }
 

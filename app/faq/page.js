@@ -14,9 +14,9 @@ const groups = [
   {
     category: 'Prices & honesty',
     faqs: [
-      { q: 'Why do you publish your prices?', a: 'Because you have a right to know the cost before you walk in. Across Lahore, patients are quoted high and negotiated down, with the price hidden until the chair. We publish a fair, fixed price for every treatment so there is nothing to haggle and nothing to fear. You can see the full list on our pricing page.' },
+      { q: 'Why do you publish your prices?', a: 'Because you have a right to know the cost before you walk in. Across Lahore, patients are quoted high and negotiated down, with the price hidden until the chair. We publish a fair, clear price for every treatment and explain it before we begin, so there is nothing to haggle and nothing to fear. You can see the full list on our pricing page.' },
       { q: 'Is the quote really the final price?', a: 'Yes. The price we quote you in writing is the price you pay. If a complex case ever needs an extra step, we explain it and price it in writing before we begin — never as a surprise added mid-treatment.' },
-      { q: 'Why are you cheaper than the big clinics?', a: 'Because we publish one fair, fixed price instead of quoting high and negotiating down. The materials and the standard of care do not change with the price tag — only the honesty of the price does.' },
+      { q: 'Why are you cheaper than the big clinics?', a: 'Because we publish one fair, clear price instead of quoting high and negotiating down. The materials and the standard of care do not change with the price tag — only the honesty of the price does.' },
       { q: 'Do you offer instalments?', a: 'Yes, for larger treatments like braces, implants, and full smile work. We explain the plan clearly, with no hidden mark-up for paying over time.' },
       { q: 'Do prices include the consultation and X-ray?', a: 'Your first consultation and full examination are free, and a single digital X-ray is included with it. A full-mouth OPG X-ray, when genuinely needed, is PKR 2,500. Treatment prices are listed separately so you always know what each step costs.' },
       { q: 'What if my case is complex?', a: 'We will tell you honestly, explain what is involved, and give you the full cost in writing before anything begins. A complex case might cost more than a simple one — for example a molar root canal (PKR 18,000) versus a front tooth (PKR 15,000) — but you will always know the figure first.' },
@@ -25,7 +25,7 @@ const groups = [
   {
     category: 'Treatments & pain',
     faqs: [
-      { q: 'Does a root canal hurt?', a: 'The infection hurts — the treatment relieves it. Once the tooth is fully numb, most patients feel only mild pressure. If you have ever found numbing difficult, tell us and we will take extra time. A front-tooth root canal is PKR 15,000 and a molar PKR 18,000, fixed and posted.' },
+      { q: 'Does a root canal hurt?', a: 'The infection hurts — the treatment relieves it. Once the tooth is fully numb, most patients feel only mild pressure. If you have ever found numbing difficult, tell us and we will take extra time. A front-tooth root canal is PKR 15,000 and a molar PKR 18,000 — posted openly and explained before we begin.' },
       { q: 'Do I really need a root canal?', a: 'Sometimes a filling is enough, and sometimes a tooth is better extracted. We confirm with an X-ray and tell you honestly which it is — even when that means less work, and less money, for us.' },
       { q: 'Does scaling damage or loosen teeth?', a: 'No. This is one of the most common myths in Pakistan. Scaling removes the hardened tartar that is actually harming your gums; healthy teeth are not affected. A scaling and polish is PKR 6,000.' },
       { q: 'Are your fillings mercury-free?', a: 'Yes. We use tooth-coloured composite, not silver-mercury amalgam, unless you specifically request otherwise. A single-surface composite filling is PKR 2,500, and we name the brand before we start.' },
