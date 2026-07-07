@@ -52,7 +52,7 @@ const silos = [
     tag: 'Women’s Dental Health',
     cards: [
       { id: 7904406, tag: 'Women', title: 'Dental care during pregnancy', excerpt: 'What is safe, what to delay, and why looking after your gums matters more during pregnancy.' },
-      { id: 6762869, tag: 'Women', title: 'Why some women avoid the dentist — and how Ohud Sisters helps', excerpt: 'The real reasons care gets put off, and how a female team removes the worry entirely.' },
+      { id: 6762869, tag: 'Women', title: 'Feeling comfortable at the dentist: seeing a female dentist', excerpt: 'The real reasons care gets put off, and how a female dentist and assistant, available on request, remove the worry entirely.' },
       { id: 4687906, tag: 'Women', title: 'Halal dental materials, explained', excerpt: 'What goes into fillings, crowns, and cements — and how we disclose and confirm halal status.' },
     ],
   },

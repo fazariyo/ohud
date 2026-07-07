@@ -23,7 +23,7 @@ const stories = [
 ];
 
 export default function PatientStoriesPage() {
-  const share = waLink('Assalamu alaikum / Hello — I would like to share my Ohud Dental story.');
+  const share = waLink('Hello — I would like to share my Ohud Dental story.');
   return (
     <>
       <Nav base="/" />

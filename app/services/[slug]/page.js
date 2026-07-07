@@ -23,7 +23,7 @@ export default function ServicePage({ params }) {
   const s = bySlug[params.slug];
   if (!s) notFound();
 
-  const wa = waLink(`Assalamu alaikum / Hello — I’d like to ask about ${s.title} at Ohud Dental.`);
+  const wa = waLink(`Hello — I’d like to ask about ${s.title} at Ohud Dental.`);
 
   return (
     <>

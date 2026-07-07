@@ -11,7 +11,7 @@ export default function ContactForm() {
   const submit = (e) => {
     e.preventDefault();
     const msg =
-      `Assalamu alaikum / Hello — I would like to book an appointment with Ohud Dental.\n\n` +
+      `Hello — I would like to book an appointment with Ohud Dental.\n\n` +
       `Name: ${f.name}\n` +
       `Phone: ${f.phone}\n` +
       `Concern: ${f.concern || '—'}\n` +
@@ -39,7 +39,7 @@ export default function ContactForm() {
           <option>Whitening / cosmetic</option>
           <option>Children’s dentistry</option>
           <option>Free second opinion</option>
-          <option>Ohud Sisters (female team)</option>
+          <option>Female dentist (on request)</option>
           <option>Family plan</option>
         </select>
       </div>

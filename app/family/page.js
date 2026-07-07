@@ -11,7 +11,7 @@ export const metadata = {
 };
 
 export default function FamilyPage() {
-  const wa = waLink('Assalamu alaikum / Hello — I’d like to join the Ohud Dental family plan.');
+  const wa = waLink('Hello — I’d like to join the Ohud Dental family plan.');
   return (
     <>
       <Nav base="/" />
@@ -63,7 +63,7 @@ export default function FamilyPage() {
           <h3>Common questions</h3>
           <p><strong>Can I add more than four people?</strong><br />Yes — additional family members can be added at a small per-person rate. Message us and we’ll tailor it to your household.</p>
           <p><strong>Does it cover treatments like fillings or crowns?</strong><br />The annual fee covers routine preventive care. Treatments are charged at our posted prices with 10% off for plan members — always in writing, always honoured.</p>
-          <p><strong>What if a member needs a female dentist?</strong><br />The <Link href="/women/">Ohud Sisters</Link> pathway is available to every family member who would prefer it.</p>
+          <p><strong>What if a member needs a female dentist?</strong><br />A female dentist is available to any family member who would prefer one.</p>
         </div>
       </section>
 

@@ -11,7 +11,7 @@ export const metadata = {
     template: '%s | Ohud Dental, Lahore',
   },
   description:
-    'Ohud Dental is a dental clinic in Lahore built on honest, ethical care: every price published, no procedure you don’t need, a dedicated women’s pathway, and a free second opinion. The dentist you would send your own family to.',
+    'Ohud Dental is a dental clinic in Lahore built on honest, ethical care: every price published, no procedure you don’t need, a female dentist available on request, and a free second opinion. The dentist you would send your own family to.',
   keywords: [
     'dentist Lahore', 'dental clinic Lahore', 'root canal price Lahore',
     'female dentist Lahore', 'honest dentist Lahore', 'posted dental prices Pakistan',
@@ -19,7 +19,7 @@ export const metadata = {
   openGraph: {
     title: 'Ohud Dental — Honest dentistry. Honoured prices.',
     description:
-      'Every price published. No procedure you don’t need. A free second opinion, a dedicated women’s pathway, and care for the whole family — in Lahore.',
+      'Every price published. No procedure you don’t need. A free second opinion, a female dentist on request, and care for the whole family — in Lahore.',
     type: 'website',
     locale: 'en_PK',
     siteName: 'Ohud Dental',
@@ -33,7 +33,7 @@ const schema = {
   '@type': 'Dentist',
   name: brand.name,
   description:
-    'Honest, ethical dental care in Lahore with publicly posted prices, a no-overtreatment policy, a dedicated women’s pathway, and a free second opinion.',
+    'Honest, ethical dental care in Lahore with publicly posted prices, a no-overtreatment policy, a female dentist available on request, and a free second opinion.',
   address: {
     '@type': 'PostalAddress',
     streetAddress: brand.address,

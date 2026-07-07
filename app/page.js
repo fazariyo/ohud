@@ -6,15 +6,17 @@ import ContactForm from '@/components/ContactForm';
 import { services, icons, team } from '@/lib/services';
 import { brand, waDefault, waLink } from '@/lib/brand';
 
-// ── Homepage hero stat cards ──
-// NOTE: the figures below are illustrative placeholders. Confirm the real
-// numbers (or reword) with the clinical team before launch (1 June 2026) —
-// the clinic is newly opened, so "experience" reflects the team's combined
-// prior practice, not the clinic's age. Card 3 is deliberately non-numeric.
+// ── Homepage hero stat cards (icon + value + label, four across) ──
+// NOTE: the "40+" and "5,000+" figures are illustrative placeholders. Confirm
+// the real numbers (or reword) with the clinical team before launch
+// (1 June 2026) — the clinic is newly opened, so "experience" reflects the
+// team's combined prior practice, not the clinic's age. Cards 3 & 4 are
+// deliberately word-values (honest — no invented rating).
 const heroStats = [
-  { num: '40+', label: 'Years of combined clinical experience' },
-  { num: '5,000+', label: 'Patients & families cared for' },
-  { icon: 'scan', label: 'Digital X-ray & modern, gentle equipment' },
+  { icon: 'clock', num: '40+', label: 'Years of experience' },
+  { icon: 'heart', num: '5,000+', label: 'Patients cared for' },
+  { icon: 'check', num: 'Fixed', label: 'Prices posted upfront' },
+  { icon: 'scan', num: 'Digital', label: 'X-ray & imaging' },
 ];
 
 // Six core treatments — names + plain-language descriptions, no prices.
@@ -33,6 +35,23 @@ const serviceIcon = {
 };
 const coreServices = services.slice(0, 6);
 
+// Common problems — "which of these sounds like you?" Each links to the
+// treatment that solves it, the way teethandgums.co maps symptoms to services.
+const problems = [
+  { icon: 'tooth', t: 'Toothache or pain', to: 'root-canal-treatment-lahore' },
+  { icon: 'heart', t: 'Bleeding, sore gums', to: 'scaling-cleaning-lahore' },
+  { icon: 'shield', t: 'Chipped or broken tooth', to: 'dental-crowns-lahore' },
+  { icon: 'smile', t: 'A missing tooth', to: 'dental-implants-lahore' },
+  { icon: 'sparkle', t: 'Stained or dull teeth', to: 'teeth-whitening-lahore' },
+  { icon: 'smile', t: 'Crooked or gappy teeth', to: 'braces-aligners-lahore' },
+  { icon: 'check', t: 'A cavity or sensitivity', to: 'dental-fillings-lahore' },
+  { icon: 'star', t: 'Gaps or uneven front teeth', to: 'veneers-lahore' },
+  { icon: 'clock', t: 'Wisdom-tooth trouble', to: 'tooth-extraction-lahore' },
+  { icon: 'clock', t: 'Sudden pain or swelling', to: 'emergency-dentist-lahore' },
+  { icon: 'heart', t: 'A nervous child', to: 'childrens-dentistry-lahore' },
+  { icon: 'sparkle', t: 'Overdue for a clean', to: 'scaling-cleaning-lahore' },
+];
+
 // Patient journey — the path from a concern to honest treatment.
 const journey = [
   { t: 'You have a concern', d: 'A toothache, an overdue check-up, or a quote from another clinic you’d like a second opinion on.' },
@@ -42,28 +61,24 @@ const journey = [
   { t: 'Honest treatment', d: 'If you choose to go ahead, we treat you gently and the agreed price is the price you pay. Nothing added mid-treatment.' },
 ];
 
-// Islamic values that guide the clinic.
-// NOTE: Arabic wording and references are widely-cited authentic narrations,
-// but please have an imam or scholar verify the text and diacritics before launch.
-const faith = [
-  {
-    ar: 'السِّوَاكُ مَطْهَرَةٌ لِلْفَمِ مَرْضَاةٌ لِلرَّبِّ',
-    quote: '“The miswak cleanses the mouth and is pleasing to the Lord.”',
-    ref: 'Reported by an-Nasa’i & Ahmad',
-    apply: 'Caring for your mouth is something our faith itself encourages. Helping you do that well, gently and honestly, is the whole of our work.',
-  },
-  {
-    ar: 'الطُّهُورُ شَطْرُ الإِيمَانِ',
-    quote: '“Purity is half of faith.”',
-    ref: 'Sahih Muslim 223',
-    apply: 'We hold our clinic to the same standard: hospital-grade sterilisation, single-use items where needed, and a space you can trust to be clean.',
-  },
-  {
-    ar: 'إِنَّ لِبَدَنِكَ عَلَيْكَ حَقًّا',
-    quote: '“Your body has a right over you.”',
-    ref: 'Sahih al-Bukhari 5199',
-    apply: 'Your body is an amanah — a trust from Allah. We honour it by protecting what you have and never recommending treatment you do not need.',
-  },
+// Before & after gallery — tabbed by treatment, like teethandgums.co.
+// NOTE: the image IDs below are STOCK PLACEHOLDERS. Real before/after photos
+// are only ever shown with the patient's written consent — swap these for
+// genuine, consented clinic results before launch (1 June 2026).
+const results = [
+  { key: 'veneers', label: 'Veneers', before: 5355694, after: 12934843, title: 'Veneers that still look like your own teeth', desc: 'Chips, gaps, and stubborn stains, corrected with thin shells shaped to suit your face — natural, never bulky or “obvious”.' },
+  { key: 'whitening', label: 'Whitening', before: 5355715, after: 5622271, title: 'A brighter smile, safely', desc: 'Years of tea, coffee, and paan lifted with dentist-supervised whitening — your gums and enamel protected the whole way.' },
+  { key: 'braces', label: 'Braces & Aligners', before: 8224633, after: 5524021, title: 'Straighter teeth, one fixed price', desc: 'Metal, ceramic, or near-invisible aligners. The full-treatment price is agreed up front and payable in instalments.' },
+  { key: 'implants', label: 'Implants', before: 3768131, after: 6812500, title: 'A missing tooth, replaced for good', desc: 'A permanent, natural-feeling replacement from the root up — with the full, honest cost given in writing before we begin.' },
+  { key: 'crowns', label: 'Crowns', before: 5355715, after: 6502305, title: 'Strength restored, shade matched', desc: 'PFM or metal-free zirconia caps that protect a weak tooth and blend in with the teeth beside them.' },
+];
+
+// Our foundation — the honest principles behind how we work.
+// (Reframed from the earlier values section: plain-language, no religious framing.)
+const values = [
+  { principle: 'We only recommend what you truly need.', apply: 'No upselling, no invented problems. If a simple filling will do, we will not sell you a crown — and we will say so out loud, even when it means less work for us.' },
+  { principle: 'The price you are shown is the price you pay.', apply: 'Every fee is posted on this site, and the written quote you receive is the bill. Nothing is added once you are in the chair — not in an emergency, not ever.' },
+  { principle: 'A clean, careful clinic you can trust.', apply: 'Hospital-grade sterilisation, single-use items where needed, and clearly named, halal materials disclosed on request. Ask to see any of it, any time.' },
 ];
 
 // "Why patients trust Ohud Dental" — six honest reasons.
@@ -72,7 +87,7 @@ const trust = [
   { icon: 'heart', t: 'We say when you don’t need it', d: 'We refuse to recommend a procedure we wouldn’t accept from another dentist ourselves.' },
   { icon: 'shield', t: 'Clean, qualified, careful', d: 'PMDC-verified dentists and hospital-grade sterilisation, every visit. Ask to see our sterilisation area any time.' },
   { icon: 'leaf', t: 'Halal materials, disclosed', d: 'We tell you the brand of every material before treatment and confirm its halal status on request.' },
-  { icon: 'sparkle', t: 'A pathway built for women', d: 'A female dentist, female assistant, and optional female-only hours through our Ohud Sisters pathway.' },
+  { icon: 'sparkle', t: 'A female dentist, on request', d: 'A female dentist and female assistant are available for any patient who would prefer one — just ask when you book.' },
   { icon: 'star', t: 'A free second opinion', d: 'Bring a plan or quote from any clinic and we’ll tell you honestly whether we’d recommend the same.' },
 ];
 
@@ -84,24 +99,22 @@ const stories = [
   { name: 'Hamza', area: 'Gulberg', quote: 'Messaged on WhatsApp at night with bad pain, got advice immediately, and was seen first thing. Fair, in writing, even in an emergency.' },
 ];
 
+// Short homepage FAQ — handles the common objections before booking.
+const faqs = [
+  { q: 'Are your prices really fixed?', a: 'Yes. Every fee is published on this site, and the written quote you receive is the invoice. Nothing is added once treatment begins — including in an emergency.' },
+  { q: 'Will the treatment hurt?', a: 'We do not start until you are fully numb and comfortable. Most patients feel pressure rather than pain, and if numbing has ever been difficult for you, tell us and we’ll take extra time.' },
+  { q: 'Can I get a female dentist?', a: 'Yes. A female dentist and female assistant are available for any patient who would prefer one — just mention it when you book on WhatsApp.' },
+  { q: 'How do I book?', a: 'The fastest way is WhatsApp. Message us and our front desk replies within minutes during clinic hours with a time, the exact location, and clear next steps.' },
+  { q: 'Do you give second opinions?', a: 'Always, and for free. Bring a treatment plan or quote from any other clinic and we’ll tell you honestly whether we’d recommend the same.' },
+];
+
 const learn = [
   { id: 16903641, tag: 'Root Canal', title: 'Do I really need a root canal?', excerpt: 'How to tell when a tooth genuinely needs a root canal — and when a filling, or honest reassurance, is enough.' },
   { id: 6502305, tag: 'Crowns', title: 'PFM vs Zirconia crowns: a Lahore patient’s guide', excerpt: 'The real difference in plain Urdu and English — strength, looks, and which is worth paying more for.' },
   { id: 4687906, tag: 'Honest Dentistry', title: 'How to choose a dentist in Lahore without getting overcharged', excerpt: 'The questions to ask, the red flags to watch for, and why a posted price list protects you.' },
 ];
 
-// Women's pathway lead + reasons.
-const femaleLead = team[1]; // Dr. Hira Naqvi — Lead Dentist, Ohud Sisters
-// Female dentist wearing a hijab in a dental clinic (Pexels 34007083, free to use).
-// Verify licensing/replace with an owned clinic photo before launch if preferred.
-const womenImg = 34007083;
-const womenReasons = [
-  { t: 'Comfort', d: 'A female dentist, a female assistant, and a calm, unhurried setting designed around how you feel — never rushed, never spoken down to.' },
-  { t: 'Safety', d: 'A female team from the front desk to the chair means you are cared for entirely by women, with a family member welcome beside you throughout.' },
-  { t: 'Modesty', d: 'Optional female-only hours and a quiet, private space mean your modesty is preserved at every step of your visit.' },
-  { t: 'Dignity', d: 'The same posted prices, honest advice, and gentle care every Ohud patient receives — offered in a way that respects you fully.' },
-];
-
+const leadDentist = team[0]; // Dr. Saad Mahmood — Founder & Lead Dentist
 const mapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(brand.address)}`;
 
 export default function Home() {
@@ -119,8 +132,8 @@ export default function Home() {
         <div className="hero-inner" style={{ gridTemplateColumns: '1fr' }}>
           <div style={{ maxWidth: '820px' }}>
             <div className="hbadge" id="hbadge"><div className="hbdot"></div><span className="hbtxt">Honest dentistry in Lahore</span></div>
-            <h1 className="hh1" id="hh1">Honest dentistry,<br /><em>rooted in Islamic values.</em></h1>
-            <p className="hdesc" id="hdesc" style={{ maxWidth: '560px' }}>The dentist you would send your own family to — calm, ethical care for everyone, with comfort, cleanliness, and dignity at its heart. Welcome to Ohud Dental, Lahore.</p>
+            <h1 className="hh1" id="hh1">Honest dentistry,<br /><em>for smiles that last.</em></h1>
+            <p className="hdesc" id="hdesc" style={{ maxWidth: '560px' }}>The dentist you would send your own family to — calm, careful care at a fair fixed price, explained in plain words before we ever begin. Welcome to Ohud Dental, Lahore.</p>
             <div className="hctas" id="hctas">
               <a href={waDefault} target="_blank" rel="noopener noreferrer" className="bwa">
                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.157 5.335 5.493 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.039zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
@@ -134,9 +147,8 @@ export default function Home() {
             <div className="hstats" id="hstat">
               {heroStats.map((s, i) => (
                 <div className="hstat-mini" key={i}>
-                  {s.icon
-                    ? <div className="hstat-ic" dangerouslySetInnerHTML={{ __html: icons[s.icon] }} />
-                    : <div className="hstat-n">{s.num}</div>}
+                  <div className="hstat-ic" dangerouslySetInnerHTML={{ __html: icons[s.icon] }} />
+                  <div className="hstat-n">{s.num}</div>
                   <div className="hstat-l">{s.label}</div>
                 </div>
               ))}
@@ -150,7 +162,7 @@ export default function Home() {
         <div className="svcx-in">
           <div style={{ textAlign: 'center', maxWidth: '620px', margin: '0 auto' }} className="rv">
             <div className="eyebrow gold center"><span className="bar"></span>Our Treatments</div>
-            <h2 className="sec-h2">Care explained in plain words</h2>
+            <h2 className="sec-h2">Everything your smile needs, in one calm place</h2>
             <p className="sec-lead ink" style={{ margin: '14px auto 0' }}>Whatever brought you here, here is what each treatment actually is — so you can decide with a clear head. Tap any card to learn more.</p>
           </div>
           <div className="svcx-grid">
@@ -169,7 +181,26 @@ export default function Home() {
         </div>
       </section>
 
-      {/* C — OUR PROCESS */}
+      {/* C — COMMON PROBLEMS */}
+      <section className="problems">
+        <div className="problems-in">
+          <div style={{ textAlign: 'center', maxWidth: '620px', margin: '0 auto' }} className="rv">
+            <div className="eyebrow teal center"><span className="bar"></span>Where It Hurts</div>
+            <h2 className="sec-h2">Which of these sounds like you?</h2>
+            <p className="sec-lead ink" style={{ margin: '14px auto 0' }}>Tell us what’s bothering you and we’ll take you straight to the honest fix — no jargon, no scare tactics.</p>
+          </div>
+          <div className="prob-grid">
+            {problems.map((p, i) => (
+              <Link key={i} href={`/services/${p.to}/`} className="prob-card rv">
+                <div className="prob-ic" dangerouslySetInnerHTML={{ __html: icons[p.icon] }} />
+                <div className="prob-txt">{p.t}<span>See the fix →</span></div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* D — OUR PROCESS */}
       <section className="journey">
         <div className="journey-in">
           <div style={{ textAlign: 'center', maxWidth: '620px', margin: '0 auto' }} className="rv">
@@ -189,30 +220,76 @@ export default function Home() {
         </div>
       </section>
 
-      {/* D — ISLAMIC VALUES */}
+      {/* E — BEFORE & AFTER GALLERY */}
+      <section className="results">
+        <div className="results-in">
+          <div style={{ textAlign: 'center', maxWidth: '640px', margin: '0 auto' }} className="rv">
+            <div className="eyebrow gold center"><span className="bar"></span>Before &amp; After</div>
+            <h2 className="sec-h2">The kind of change good dentistry makes</h2>
+            <p className="sec-lead ink" style={{ margin: '14px auto 0' }}>A look at what each treatment can do. Tap a treatment to see it — with honest expectations, never overpromised.</p>
+          </div>
+          <div className="ba-tabs">
+            {results.map((r, i) => (
+              <button key={r.key} className={`ba-tab${i === 0 ? ' active' : ''}`} data-ba={r.key} type="button">{r.label}</button>
+            ))}
+          </div>
+          {results.map((r, i) => (
+            <div key={r.key} className={`ba-panel${i === 0 ? ' active' : ''}`} data-ba={r.key}>
+              <div className="ba-pair">
+                <div className="ba-shot"><span className="ba-badge">Before</span><Img id={r.before} w={640} h={520} alt={`Before ${r.label.toLowerCase()} at Ohud Dental, Lahore`} /></div>
+                <div className="ba-shot"><span className="ba-badge after">After</span><Img id={r.after} w={640} h={520} alt={`After ${r.label.toLowerCase()} at Ohud Dental, Lahore`} /></div>
+              </div>
+              <div className="ba-text">
+                <h3>{r.title}</h3>
+                <p>{r.desc}</p>
+              </div>
+            </div>
+          ))}
+          <p className="ba-note">The images above are illustrative for now. Real before-and-after photos are only ever shared with the patient’s written consent, and will replace these after launch.</p>
+        </div>
+      </section>
+
+      {/* F — LEAD DENTIST SPOTLIGHT */}
+      <section className="dentist" style={{ paddingTop: '110px' }}>
+        <div className="dentist-in">
+          <div className="dentist-img rl">
+            <Img id={leadDentist.photo} w={720} h={840} alt={`${leadDentist.name}, ${leadDentist.role} at Ohud Dental, Lahore`} />
+          </div>
+          <div className="dentist-body rr">
+            <div className="eyebrow gold"><span className="bar"></span>Meet Your Lead Dentist</div>
+            <p className="dentist-quote">“From your first check-up to your final result, you are in steady, careful hands — and you will always hear the truth about what you do and don’t need.”</p>
+            <p className="dentist-cred">{leadDentist.bio}</p>
+            <div className="dentist-name">{leadDentist.name}</div>
+            <div className="dentist-role">{leadDentist.role} · {leadDentist.pmdc}</div>
+            <div style={{ marginTop: '26px' }}>
+              <Link href="/our-doctors/" className="bgold">Meet the whole team →</Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* G — OUR FOUNDATION (honest principles) */}
       <section className="faith">
         <div className="faith-glow"></div>
         <div className="faith-in">
           <div className="faith-head rv">
             <div className="eyebrow gold center" style={{ color: 'var(--gold2)' }}><span className="bar"></span>Our Foundation</div>
-            <h2 className="sec-h2 light">Dentistry on a foundation of Islamic ethics</h2>
-            <p className="sec-lead" style={{ color: 'rgba(255,255,255,0.6)', margin: '14px auto 0', maxWidth: '600px' }}>Cleanliness, honesty, and care for the body are not extras for us — they are the reason we practise the way we do. These values shape every visit, and patients of every faith are equally welcome.</p>
+            <h2 className="sec-h2 light">Why we practise the way we do</h2>
+            <p className="sec-lead" style={{ color: 'rgba(255,255,255,0.6)', margin: '14px auto 0', maxWidth: '600px' }}>Cleanliness, honesty, and genuine care are not extras for us — they are the whole reason we practise the way we do. These principles shape every visit, for every patient who walks through our door.</p>
           </div>
           <div className="faith-grid">
-            {faith.map((f, i) => (
+            {values.map((v, i) => (
               <div className={`fcard rv d${(i % 3) + 1}`} key={i}>
-                {f.ar && <div className="fcard-ar">{f.ar}</div>}
-                <p className="fcard-quote">{f.quote}</p>
-                <div className="fcard-ref">{f.ref}</div>
-                <p className="fcard-apply">{f.apply}</p>
+                <p className="fcard-quote">{v.principle}</p>
+                <p className="fcard-apply" style={{ borderTop: 'none', paddingTop: '14px' }}>{v.apply}</p>
               </div>
             ))}
           </div>
-          <p className="faith-note">We mention our values openly because they explain our promises — fair fixed prices, no overtreatment, and disclosed halal materials. They are how we earn your trust, not a label we trade on.</p>
+          <p className="faith-note">We state our principles openly because they explain our promises — fair fixed prices, no overtreatment, and disclosed materials. They are how we earn your trust, not a slogan we trade on.</p>
         </div>
       </section>
 
-      {/* E — CARING FOR YOUR PARENTS */}
+      {/* H — CARING FOR YOUR PARENTS */}
       <section className="parents">
         <div className="parents-in">
           <div className="parents-img rl">
@@ -222,50 +299,39 @@ export default function Home() {
             <div className="eyebrow sage"><span className="bar"></span>For Our Elders</div>
             <h2 className="sec-h2">The ones who cared for you, now in your care</h2>
             <div className="parents-ayah">
-              <div className="parents-ayah-ar">وَقَضَىٰ رَبُّكَ أَلَّا تَعْبُدُوا إِلَّا إِيَّاهُ وَبِالْوَالِدَيْنِ إِحْسَانًا</div>
-              <p>“And your Lord has decreed that you worship none but Him, and that you be good to your parents.”</p>
-              <span className="ref">— Qur’an, Surah Al-Isra 17:23</span>
+              <p>“Looking after your parents’ health is one of the kindest things you can do — and toothache should never be something they quietly put up with.”</p>
             </div>
-            <p>A man once asked the Prophet ﷺ who was most deserving of his good company. He said, “Your mother,” three times, and then, “your father.” Honouring our parents is among the highest of deeds — and it does not stop at words.</p>
-            <p>If you are young and strong today, the kindest thing you can do is not let your mother or father quietly bear toothache in their later years. Bring them to us. <strong>We will care for your parents the way we care for our own</strong> — gently, patiently, and with honest solutions that actually bring relief. No one should suffer pain at that age when it can be eased.</p>
+            <p>If you are young and strong today, the kindest thing you can do is not let your mother or father silently bear toothache in their later years. Bring them to us. <strong>We will care for your parents the way we care for our own</strong> — gently, patiently, and with honest solutions that actually bring relief. No one should suffer pain at that age when it can be eased.</p>
             <div style={{ marginTop: '26px' }}>
-              <a href={waLink('Assalamu alaikum — I would like to book a gentle appointment for my parent.')} target="_blank" rel="noopener noreferrer" className="bgold">Book for your parents →</a>
+              <a href={waLink('Hello — I would like to book a gentle appointment for my parent.')} target="_blank" rel="noopener noreferrer" className="bgold">Book for your parents →</a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* F — OHUD SISTERS (detailed women's pathway) */}
-      <section className="womenx" id="women">
-        <div className="womenx-in">
-          <div className="womenx-top">
-            <div className="womenx-img rl">
-              <Img id={womenImg} w={800} h={1000} alt="A female dentist wearing a hijab at Ohud Dental, Lahore" />
+      {/* I — MEET THE TEAM */}
+      <section className="docs">
+        <div className="docs-in">
+          <div className="docs-head">
+            <div className="rl">
+              <div className="eyebrow teal"><span className="bar"></span>Our Dentists</div>
+              <h2 className="sec-h2">The team caring for you</h2>
             </div>
-            <div className="womenx-intro rr">
-              <div className="eyebrow sage"><span className="bar"></span>Ohud Sisters · Women’s Pathway</div>
-              <h2 className="sec-h2">Care for our sisters, by our sisters</h2>
-              <p className="sec-lead ink" style={{ marginTop: '16px' }}>Many women in Lahore quietly delay dental care — unsure of who will treat them, or how they will be spoken to. We built an entire pathway to remove that worry, because our faith calls us to protect the comfort, safety, and modesty of the women in our care.</p>
-              <p className="sec-lead ink" style={{ marginTop: '12px' }}>A female dentist, a female assistant, a female receptionist on WhatsApp, and optional female-only hours — a calm, modest space where you are cared for entirely by women.</p>
-              <div style={{ marginTop: '24px', display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
-                <a href={waLink('Assalamu alaikum — I would like to book through the Ohud Sisters women’s pathway.')} target="_blank" rel="noopener noreferrer" className="bwa">Book with our female team →</a>
-                <Link href="/women/" className="bghost" style={{ color: 'var(--navy)', borderColor: 'var(--gl)' }}>Learn about Ohud Sisters →</Link>
-              </div>
-            </div>
+            <Link href="/our-doctors/" className="docs-link rr">Meet all our dentists →</Link>
           </div>
-          <div className="womenx-reasons">
-            {womenReasons.map((r, i) => (
-              <div className={`wreason rv d${(i % 4) + 1}`} key={i}>
-                <h4>{r.t}</h4>
-                <p>{r.d}</p>
-              </div>
+          <div className="docs-grid">
+            {team.slice(0, 4).map((d, i) => (
+              <Link key={i} href="/our-doctors/" className={`doc-card rv d${(i % 4) + 1}`}>
+                <div className="doc-card-img"><Img id={d.photo} w={600} h={720} alt={`${d.name}, ${d.role} at Ohud Dental, Lahore`} /></div>
+                <div className="doc-name">{d.name}</div>
+                <div className="doc-role">{d.role}</div>
+              </Link>
             ))}
           </div>
-          <p className="womenx-note">Led by {femaleLead.name}, {femaleLead.role} · {femaleLead.pmdc}.</p>
         </div>
       </section>
 
-      {/* G — WHY PATIENTS TRUST OHUD */}
+      {/* J — WHY PATIENTS TRUST OHUD */}
       <section className="promises" style={{ paddingTop: '110px' }}>
         <div style={{ textAlign: 'center', maxWidth: '620px', margin: '0 auto 54px' }} className="rv">
           <div className="eyebrow gold center"><span className="bar"></span>Why Patients Trust Us</div>
@@ -282,7 +348,28 @@ export default function Home() {
         </div>
       </section>
 
-      {/* H — BOOK AN APPOINTMENT CARD */}
+      {/* K — FAQ */}
+      <section className="faq">
+        <div className="faq-in">
+          <div className="faq-head rv">
+            <div className="eyebrow teal center"><span className="bar"></span>Good Questions</div>
+            <h2 className="sec-h2">Answered honestly, before you book</h2>
+          </div>
+          <div className="faq-list">
+            {faqs.map((f, i) => (
+              <div className={`faq-item${i === 0 ? ' active' : ''}`} key={i}>
+                <div className="faq-question">{f.q}<span className="faq-icon">+</span></div>
+                <div className="faq-answer">{f.a}</div>
+              </div>
+            ))}
+          </div>
+          <div style={{ textAlign: 'center', marginTop: '40px' }}>
+            <Link href="/faq/" className="bgold">See all questions →</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* L — BOOK AN APPOINTMENT CARD */}
       <section className="svc-cta">
         <div className="svc-cta-glow"></div>
         <div className="svc-cta-in rv">
@@ -296,7 +383,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* I — REVIEWS */}
+      {/* M — REVIEWS */}
       <section className="tests" id="stories">
         <div className="tests-in">
           <div style={{ textAlign: 'center' }} className="rv">
@@ -320,7 +407,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* J — GET IN TOUCH */}
+      {/* N — GET IN TOUCH */}
       <section className="contact" id="contact">
         <div className="contact-glow"></div>
         <div className="contact-in">
@@ -340,7 +427,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* K — BLOGS */}
+      {/* O — BLOGS */}
       <section className="blog" id="learn">
         <div className="blog-in">
           <div className="blog-head">

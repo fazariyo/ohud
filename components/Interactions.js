@@ -145,6 +145,16 @@ export default function Interactions() {
       on(q, 'click', fn);
     });
 
+    /* BEFORE / AFTER GALLERY TABS */
+    document.querySelectorAll('.ba-tab').forEach((tab) => {
+      const fn = () => {
+        const key = tab.dataset.ba;
+        document.querySelectorAll('.ba-tab').forEach((t) => t.classList.toggle('active', t === tab));
+        document.querySelectorAll('.ba-panel').forEach((p) => p.classList.toggle('active', p.dataset.ba === key));
+      };
+      on(tab, 'click', fn);
+    });
+
     return () => cleanups.forEach((fn) => fn());
   }, [pathname]);
 

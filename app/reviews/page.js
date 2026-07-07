@@ -14,7 +14,7 @@ const reviews = [
   { name: 'Mariam', area: 'Gulberg', quote: 'What I’ll remember is that they told me I didn’t need the second filling another dentist wanted to do. Who does that? Five stars for honesty alone.' },
   { name: 'Imran', area: 'Johar Town', quote: 'Fixed price, posted on the website, and that is exactly what I paid. No “DM for price”, no haggling, no surprise charges at the counter.' },
   { name: 'Ayesha', area: 'Model Town', quote: 'My wisdom tooth removal was far calmer than I expected. They explained every step before doing it and checked on me throughout.' },
-  { name: 'Shahida', area: 'Garden Town', quote: 'As an older woman I prefer a female dentist. The Ohud Sisters team made me comfortable and never rushed me. I’ll keep coming here.' },
+  { name: 'Shahida', area: 'Garden Town', quote: 'As an older woman I prefer a female dentist. The female dentist and assistant made me comfortable and never rushed me. I’ll keep coming here.' },
   { name: 'Zeeshan', area: 'DHA', quote: 'Booked on WhatsApp, got a reply in minutes, and was seen the next day. Clean clinic, proper sterilisation, fair price. No complaints at all.' },
   { name: 'Nadia', area: 'Faisal Town', quote: 'I was scared scaling would loosen my teeth — a myth they patiently explained away. My gums stopped bleeding within a week.' },
   { name: 'Komal', area: 'Wapda Town', quote: 'One fixed price for my whole braces treatment, payable in instalments. No “adjustment fee” every single visit like the last place.' },
@@ -23,7 +23,7 @@ const reviews = [
 ];
 
 export default function ReviewsPage() {
-  const review = waLink('Assalamu alaikum / Hello — I’d like to leave an honest review of my visit to Ohud Dental.');
+  const review = waLink('Hello — I’d like to leave an honest review of my visit to Ohud Dental.');
   return (
     <>
       <Nav base="/" />

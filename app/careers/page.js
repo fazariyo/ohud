@@ -11,7 +11,7 @@ export const metadata = {
 };
 
 export default function CareersPage() {
-  const wa = waLink('Assalamu alaikum / Hello — I’m interested in working at Ohud Dental.');
+  const wa = waLink('Hello — I’m interested in working at Ohud Dental.');
   return (
     <>
       <Nav base="/" />
@@ -40,8 +40,8 @@ export default function CareersPage() {
 
           <h2>What we offer</h2>
           <ul>
-            <li><strong>Fair wages (Barakah).</strong> Honest pay for honest work — we believe a fair wage is part of a blessed business.</li>
-            <li><strong>Real training (Ihsan).</strong> Continuous learning and the best available materials, so you can do your work well.</li>
+            <li><strong>Fair wages.</strong> Honest pay for honest work — we believe a fair wage is simply the right way to run a business.</li>
+            <li><strong>Real training.</strong> Continuous learning and quality materials, so you can do your work well.</li>
             <li><strong>A calm clinic.</strong> An unhurried, considered environment — no pressure to push procedures or rush patients.</li>
             <li><strong>Work you can feel good about.</strong> A clinic built on honesty, with a fixed share of revenue going to free care.</li>
           </ul>
@@ -50,7 +50,7 @@ export default function CareersPage() {
           <p>These roles are illustrative of what we tend to need — but we are always glad to meet good people, whether or not a role is listed.</p>
           <ul>
             <li>General and family dentists</li>
-            <li>A female dentist and assistant for our Ohud Sisters women’s pathway</li>
+            <li>A female dentist and assistant, available for patients who prefer one</li>
             <li>A front-desk WhatsApp coordinator</li>
             <li>A dental hygienist</li>
           </ul>

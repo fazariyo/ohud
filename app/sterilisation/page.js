@@ -11,7 +11,7 @@ export const metadata = {
 };
 
 export default function SterilisationPage() {
-  const wa = waLink('Assalamu alaikum / Hello — I would like to ask about, or see, the sterilisation area at Ohud Dental.');
+  const wa = waLink('Hello — I would like to ask about, or see, the sterilisation area at Ohud Dental.');
   return (
     <>
       <Nav base="/" />

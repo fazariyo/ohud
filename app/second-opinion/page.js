@@ -11,7 +11,7 @@ export const metadata = {
 };
 
 export default function SecondOpinionPage() {
-  const wa = waLink('Assalamu alaikum / Hello — I have a treatment plan/quote from another clinic and would like a free second opinion.');
+  const wa = waLink('Hello — I have a treatment plan/quote from another clinic and would like a free second opinion.');
   return (
     <>
       <Nav base="/" />
@@ -45,7 +45,7 @@ export default function SecondOpinionPage() {
 
           <h2>Why we offer this</h2>
           <p>Across Lahore, patients increasingly feel they are over-quoted — especially on root canals, crowns, and “extra procedures” suggested mid-treatment. That worry is fair, and it is exactly what we want to remove.</p>
-          <p>A free second opinion costs us time. We give it anyway, because a patient who trusts us is worth more than a procedure we talked them into. The truthful merchant, it is said, keeps the best company.</p>
+          <p>A free second opinion costs us time. We give it anyway, because a patient who trusts us is worth more than a procedure we talked them into. Honesty is simply good business — and the right thing to do.</p>
 
           <h3>Common questions</h3>
           <p><strong>Is it really free?</strong><br />Yes — the consultation, the second opinion, and any X-ray we need to give it are free. There is no catch.</p>

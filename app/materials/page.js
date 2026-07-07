@@ -39,7 +39,7 @@ const materials = [
 ];
 
 export default function MaterialsPage() {
-  const wa = waLink('Assalamu alaikum / Hello — I would like to ask about the materials Ohud Dental uses.');
+  const wa = waLink('Hello — I would like to ask about the materials Ohud Dental uses.');
   return (
     <>
       <Nav base="/" />

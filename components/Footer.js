@@ -37,7 +37,6 @@ export default function Footer() {
           <div className="fcol">
             <h5>The Ohud Way</h5>
             <Link href="/pricing/">Posted Prices</Link>
-            <Link href="/women/">Ohud Sisters</Link>
             <Link href="/family/">Family Plan</Link>
             <Link href="/second-opinion/">Free Second Opinion</Link>
             <Link href="/charity/">Charity Days &amp; Report</Link>

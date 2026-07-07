@@ -8,11 +8,11 @@ import { team } from '@/lib/services';
 export const metadata = {
   title: 'Our Doctors — The Dentists at Ohud Dental, Lahore',
   description:
-    'Meet the dentists behind your care at Ohud Dental, Gulberg, Lahore — PMDC-verified general dentists and specialists in root canals, orthodontics, children’s care, gum treatment and implants, including our female Ohud Sisters team.',
+    'Meet the dentists behind your care at Ohud Dental, Gulberg, Lahore — PMDC-verified general dentists and specialists in root canals, orthodontics, children’s care, gum treatment and implants, with a female dentist and female assistant available on request.',
 };
 
 export default function OurDoctorsPage() {
-  const wa = waLink('Assalamu alaikum / Hello — I’d like to book an appointment with one of your dentists.');
+  const wa = waLink('Hello — I’d like to book an appointment with one of your dentists.');
   return (
     <>
       <Nav base="/" />
@@ -61,10 +61,9 @@ export default function OurDoctorsPage() {
 
       <section className="prose-sec" style={{ background: 'var(--sage-bg)', paddingTop: '60px', paddingBottom: '70px' }}>
         <div className="prose-in" style={{ maxWidth: '760px', textAlign: 'center' }}>
-          <div className="eyebrow sage center"><span className="bar"></span>Ohud Sisters</div>
+          <div className="eyebrow sage center"><span className="bar"></span>Women’s Care</div>
           <h2 style={{ marginTop: 0 }}>A female team, for women who prefer one</h2>
-          <p>Through our Ohud Sisters pathway, a female dentist and a female assistant care for women and children in a calm, modest setting — with optional female-only hours. The promise, and the prices, are exactly the same.</p>
-          <p style={{ marginBottom: 0 }}><Link href="/women/" className="bgold">Read about Ohud Sisters →</Link></p>
+          <p>A female dentist and a female assistant are available on request for women and children. The promise, and the prices, are exactly the same.</p>
         </div>
       </section>
 

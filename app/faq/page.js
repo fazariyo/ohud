@@ -7,7 +7,7 @@ import { waLink, waDefault, brand } from '@/lib/brand';
 export const metadata = {
   title: 'FAQ — Honest Answers, Plainly',
   description:
-    'Straight answers about Ohud Dental in Lahore: our published prices, treatments and pain, the Ohud Sisters women’s pathway, family and children, charity days, materials and safety, and how to book.',
+    'Straight answers about Ohud Dental in Lahore: our published prices, treatments and pain, women’s care, family and children, charity days, materials and safety, and how to book.',
 };
 
 const groups = [
@@ -35,12 +35,11 @@ const groups = [
     ],
   },
   {
-    category: 'Women — Ohud Sisters',
+    category: 'Women’s care',
     faqs: [
-      { q: 'Do you have a female dentist?', a: 'Yes. Our Ohud Sisters pathway means a female dentist, a female assistant, and a female receptionist on WhatsApp, with optional female-only hours. Just say “Ohud Sisters” when you book.' },
-      { q: 'What is included in Ohud Sisters?', a: 'A female dentist, a female chairside assistant, a female receptionist on WhatsApp, optional female-only hours, and a calm, modest setting — all at the same honest, posted prices as every Ohud patient.' },
-      { q: 'Can family stay with me?', a: 'Of course. You are welcome to have a family member present, and a female assistant is there throughout your appointment regardless.' },
-      { q: 'Is it only for certain treatments?', a: 'No. The full range of Ohud treatments — check-ups, fillings, root canals, crowns, cosmetic work, and children’s dentistry — is available through the Ohud Sisters pathway.' },
+      { q: 'Do you have a female dentist?', a: 'Yes. A female dentist and a female assistant are available on request — just let us know when you book, at the same honest, posted prices as every Ohud patient.' },
+      { q: 'Can family stay with me?', a: 'Of course. You are welcome to have a family member present, and a female assistant can be there throughout your appointment on request.' },
+      { q: 'Is it only for certain treatments?', a: 'No. The full range of Ohud treatments — check-ups, fillings, root canals, crowns, cosmetic work, and children’s dentistry — is available with a female dentist and assistant on request.' },
     ],
   },
   {
@@ -49,7 +48,7 @@ const groups = [
       { q: 'What is in the family plan?', a: 'Our family plan covers routine care for a family of four for a year at PKR 22,000 — including check-ups and cleanings, with honest, posted prices for any treatment needed beyond that. Message us and we will explain exactly what it includes.' },
       { q: 'When should my child first visit?', a: 'Around their first birthday, or whenever the first tooth appears. Early visits are about comfort and prevention, not treatment, and a child consultation is free.' },
       { q: 'Can I stay with my child during treatment?', a: 'Always. A parent is welcome beside the chair for the entire visit. We never rush a child, and we let them get comfortable first.' },
-      { q: 'Do you handle nervous children?', a: 'Yes. We take our time, explain things simply, and build trust before we treat. Many anxious children leave asking when they can come back — and a female dentist is available through Ohud Sisters if your child would prefer one.' },
+      { q: 'Do you handle nervous children?', a: 'Yes. We take our time, explain things simply, and build trust before we treat. Many anxious children leave asking when they can come back — and a female dentist is available on request if your child would prefer one.' },
     ],
   },
   {
@@ -93,7 +92,7 @@ export default function FaqPage() {
           <div className="svc-crumb"><Link href="/">Home</Link><span>/</span>FAQ</div>
           <div className="svc-tag"><span></span>Honest Answers</div>
           <h1 className="svc-h1">Questions, answered plainly.</h1>
-          <p className="svc-lead">Straight answers about our prices, treatments, the Ohud Sisters pathway, family care, charity days, materials, and booking — no spin, no small print.</p>
+          <p className="svc-lead">Straight answers about our prices, treatments, women’s care, family care, charity days, materials, and booking — no spin, no small print.</p>
           <div className="svc-hero-ctas">
             <a href={waDefault} target="_blank" rel="noopener noreferrer" className="bwa">Ask us anything →</a>
             <Link href="/pricing/" className="bghost">See all prices →</Link>

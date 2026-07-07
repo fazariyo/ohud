@@ -31,7 +31,6 @@ export default function Nav({ base = '' }) {
           </div>
         </div>
         <Link href="/pricing/">Pricing</Link>
-        <Link href="/women/">Ohud Sisters</Link>
         <Link href="/family/">Family Plan</Link>
         <div className="ndrop">
           <Link href="/about/" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
@@ -57,7 +56,6 @@ export default function Nav({ base = '' }) {
     <div id="mmenu" className="mmenu">
       <Link href="/">Home</Link>
       <Link href="/pricing/">Pricing</Link>
-      <Link href="/women/">Ohud Sisters — Women’s Pathway</Link>
       <Link href="/family/">Family Plan</Link>
       <Link href="/second-opinion/">Free Second Opinion</Link>
       <Link href="/about/">Our Promise</Link>

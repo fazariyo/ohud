@@ -66,7 +66,7 @@ export default function LegalModal() {
             <h3>6. Limitation of Liability</h3>
             <p>While we strive for accuracy, OHUD Dental is not liable for any decisions made solely on the basis of website content. Clinical outcomes depend on individual factors discussed during your consultation.</p>
             <h3>7. Governing Law</h3>
-            <p>These terms are governed by the laws of the Islamic Republic of Pakistan, and any disputes shall be subject to the jurisdiction of the courts of Lahore.</p>
+            <p>These terms are governed by the laws of Pakistan, and any disputes shall be subject to the jurisdiction of the courts of Lahore.</p>
           </div>
         </div>
 

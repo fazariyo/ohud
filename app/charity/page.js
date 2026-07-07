@@ -18,7 +18,7 @@ const report = [
 ];
 
 export default function CharityPage() {
-  const wa = waLink('Assalamu alaikum — I’d like to ask about Ohud’s charity dental days (to nominate someone / to support).');
+  const wa = waLink('Hello — I’d like to ask about Ohud’s charity dental days (to nominate someone / to support).');
   return (
     <>
       <Nav base="/" />

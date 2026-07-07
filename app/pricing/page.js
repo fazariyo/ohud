@@ -18,7 +18,7 @@ const disclaimers = [
 ];
 
 export default function PricingPage() {
-  const wa = waLink('Assalamu alaikum / Hello — I have a question about your prices / a quote from another clinic.');
+  const wa = waLink('Hello — I have a question about your prices / a quote from another clinic.');
   return (
     <>
       <Nav base="/" />
@@ -77,7 +77,7 @@ export default function PricingPage() {
           <div className="pwhy">
             <h3>Why we publish our prices</h3>
             <p>In Pakistan, almost no clinic shows its prices. You are asked to call, to DM, to come in — and only then is a number quoted, often shaped by how you look or how worried you seem. We think that is the opposite of trust.</p>
-            <p>So we made a different choice. Every price is here, in the open, the same for everyone — the wedding-prep patient and the charity-day patient alike. Honest earning carries blessing; over-quoting does not. The price we write is the price you pay, and we would rather earn less, fairly, than more by confusing you.</p>
+            <p>So we made a different choice. Every price is here, in the open, the same for everyone — the wedding-prep patient and the charity-day patient alike. We believe an honest price is the right one, and over-quoting is not. The price we write is the price you pay, and we would rather earn less, fairly, than more by confusing you.</p>
             <div style={{ marginTop: '26px', display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
               <a href={waDefault} target="_blank" rel="noopener noreferrer" className="bwa">Book on WhatsApp →</a>
               <a href={`tel:${brand.phoneHref}`} className="bghost">Call {brand.phoneDisplay}</a>

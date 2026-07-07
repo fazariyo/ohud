@@ -832,12 +832,13 @@ footer{background:#0C151D;padding:70px 5.5% 44px}
 /* ── Hero mini stat cards (replaces the trust ribbon) ── */
 .bghost svg{flex-shrink:0}
 .hstats{display:flex;gap:14px;margin-top:40px;flex-wrap:wrap;opacity:0;transform:translateY(16px)}
-.hstat-mini{flex:1 1 0;min-width:158px;background:rgba(255,255,255,0.07);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.13);border-radius:16px;padding:20px 22px;transition:all 0.4s var(--ease)}
-.hstat-mini:hover{background:rgba(255,255,255,0.11);border-color:rgba(46,143,161,0.45);transform:translateY(-4px)}
-.hstat-n{font-family:var(--serif);font-size:32px;font-weight:700;color:var(--teal2);line-height:1}
-.hstat-ic{width:38px;height:38px;border-radius:11px;background:rgba(46,143,161,0.18);color:var(--teal2);display:flex;align-items:center;justify-content:center;margin-bottom:4px}
-.hstat-l{font-size:12px;font-weight:400;color:rgba(255,255,255,0.62);line-height:1.5;margin-top:9px}
-@media(max-width:560px){.hstats{gap:10px}.hstat-mini{min-width:0;flex-basis:100%;padding:16px 18px}.hstat-n{font-size:27px}}
+.hstat-mini{flex:1 1 0;min-width:132px;background:rgba(255,255,255,0.08);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,0.16);border-radius:16px;padding:22px 16px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;transition:all 0.4s var(--ease)}
+.hstat-mini:hover{background:rgba(255,255,255,0.13);border-color:rgba(46,143,161,0.5);transform:translateY(-5px);box-shadow:0 18px 44px rgba(0,0,0,0.28)}
+.hstat-ic{width:42px;height:42px;border-radius:12px;background:rgba(46,143,161,0.2);color:var(--teal2);display:flex;align-items:center;justify-content:center}
+.hstat-ic svg{width:21px;height:21px}
+.hstat-n{font-family:var(--serif);font-size:27px;font-weight:700;color:#fff;line-height:1.05;letter-spacing:-0.3px}
+.hstat-l{font-size:11.5px;font-weight:500;color:rgba(255,255,255,0.62);line-height:1.4;letter-spacing:0.2px}
+@media(max-width:560px){.hstats{gap:10px}.hstat-mini{min-width:0;flex-basis:calc(50% - 5px);padding:18px 12px}.hstat-n{font-size:23px}}
 
 /* ── Treatments grid (names + descriptions, no prices) ── */
 .svcx{background:#fff;padding:120px 5.5%}
@@ -910,3 +911,40 @@ footer{background:#0C151D;padding:70px 5.5% 44px}
 .wreason p{font-size:13.5px;font-weight:300;color:var(--gm);line-height:1.7}
 .womenx-note{text-align:center;font-size:13.5px;font-weight:400;color:var(--gm);margin-top:40px}
 @media(max-width:900px){.womenx-top{grid-template-columns:1fr;gap:32px}.womenx-img{height:380px;order:-1}.womenx-reasons{grid-template-columns:1fr}.womenx{padding:76px 5.5%}}
+
+/* ═══════════════════════════════ COMMON PROBLEMS GRID ═══════════════════════════════ */
+.problems{background:#fff;padding:120px 5.5%}
+.problems-in{max-width:1200px;margin:0 auto}
+.prob-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:52px}
+.prob-card{display:flex;align-items:center;gap:15px;background:var(--off);border:1px solid var(--gl);border-radius:14px;padding:18px 20px;text-decoration:none;transition:all 0.35s var(--ease)}
+.prob-card:hover{background:#fff;border-color:rgba(46,143,161,0.35);transform:translateY(-4px);box-shadow:0 12px 34px rgba(46,143,161,0.1)}
+.prob-ic{width:46px;height:46px;border-radius:12px;background:var(--teal3);color:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.35s var(--ease)}
+.prob-ic svg{width:22px;height:22px}
+.prob-card:hover .prob-ic{background:var(--teal);color:#fff}
+.prob-txt{font-size:14.5px;font-weight:600;color:var(--navy);line-height:1.3}
+.prob-txt span{display:block;font-size:11.5px;font-weight:600;color:var(--teal);letter-spacing:0.3px;margin-top:4px;opacity:0.75;transition:opacity 0.35s}
+.prob-card:hover .prob-txt span{opacity:1}
+@media(max-width:1000px){.prob-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){.problems{padding:76px 5.5%}}
+@media(max-width:520px){.prob-grid{grid-template-columns:1fr}}
+
+/* ═══════════════════════════════ BEFORE & AFTER GALLERY ═══════════════════════════════ */
+.results{background:var(--off);padding:120px 5.5%}
+.results-in{max-width:1100px;margin:0 auto}
+.ba-tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:48px 0 42px}
+.ba-tab{background:#fff;border:1px solid var(--gl);border-radius:100px;padding:11px 24px;font-size:13.5px;font-weight:600;color:var(--gm);cursor:pointer;font-family:var(--sans);transition:all 0.3s var(--ease)}
+.ba-tab:hover{border-color:var(--teal);color:var(--teal)}
+.ba-tab.active{background:var(--navy);border-color:var(--navy);color:#fff;box-shadow:0 8px 24px rgba(15,44,63,0.18)}
+.ba-panel{display:none}
+.ba-panel.active{display:block;animation:baFade 0.5s var(--ease)}
+@keyframes baFade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.ba-pair{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.ba-shot{position:relative;border-radius:18px;overflow:hidden;height:380px;box-shadow:0 18px 50px rgba(15,44,63,0.1)}
+.ba-shot img{width:100%;height:100%;object-fit:cover;object-position:center 20%}
+.ba-badge{position:absolute;top:16px;left:16px;z-index:2;background:rgba(15,44,63,0.82);backdrop-filter:blur(8px);color:#fff;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:7px 15px;border-radius:100px}
+.ba-badge.after{background:var(--teal)}
+.ba-text{text-align:center;margin-top:32px}
+.ba-text h3{font-family:var(--serif);font-size:clamp(22px,2.6vw,28px);font-weight:600;color:var(--navy);margin-bottom:12px}
+.ba-text p{font-size:15px;font-weight:300;color:var(--gm);line-height:1.78;max-width:640px;margin:0 auto}
+.ba-note{text-align:center;font-size:13px;font-weight:300;color:var(--gm);font-style:italic;line-height:1.7;margin:44px auto 0;max-width:660px}
+@media(max-width:768px){.results{padding:76px 5.5%}.ba-shot{height:240px}.ba-pair{gap:12px}}
