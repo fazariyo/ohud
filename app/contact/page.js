@@ -52,9 +52,9 @@ export default function ContactPage() {
         <div className="prose-in" style={{ maxWidth: '900px' }}>
           <div className="eyebrow teal"><span className="bar"></span>Find Us</div>
           <h2 style={{ marginTop: '0' }}>How to reach the clinic</h2>
-          <p style={{ marginBottom: '28px' }}>We’re at {brand.address} — {brand.landmarks}. If you navigate by area rather than street, head for Gulberg Main Boulevard and look for the landmarks above. Open {brand.hours}.</p>
+          <p style={{ marginBottom: '28px' }}>We’re at {brand.address} — {brand.landmarks}. If you navigate by area rather than street, head for The Punjab School (Johar Town Campus) and we’re right beside it. Open {brand.hours}.</p>
           <iframe
-            src={`https://maps.google.com/maps?q=${encodeURIComponent(brand.address)}&output=embed`}
+            src={`https://maps.google.com/maps?q=${encodeURIComponent('The Punjab School Johar Town Campus, Lahore')}&output=embed`}
             width="100%"
             height="380"
             style={{ border: 0, borderRadius: '18px' }}
