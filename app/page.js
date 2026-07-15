@@ -13,7 +13,7 @@ import { brand, waDefault, waLink } from '@/lib/brand';
 // team's combined prior practice, not the clinic's age. Cards 3 & 4 are
 // deliberately word-values (honest — no invented rating).
 const heroStats = [
-  { icon: 'clock', num: '40+', label: 'Years of experience' },
+  { icon: 'clock', num: '10', label: 'Years of experience' },
   { icon: 'heart', num: '5,000+', label: 'Patients cared for' },
   { icon: 'check', num: 'Upfront', label: 'Prices, no hidden charges' },
   { icon: 'scan', num: 'Digital', label: 'X-ray & advanced equipment' },
@@ -115,7 +115,7 @@ const learn = [
 ];
 
 const leadDentist = team[0]; // Dr. Saad Mahmood — Founder & Lead Dentist
-const mapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(brand.address)}`;
+const mapsLink = brand.mapsLink;
 
 export default function Home() {
   return (

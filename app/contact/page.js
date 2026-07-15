@@ -62,6 +62,7 @@ export default function ContactPage() {
             referrerPolicy="no-referrer-when-downgrade"
             title="Ohud Dental location"
           ></iframe>
+          <a href={brand.mapsLink} target="_blank" rel="noopener noreferrer" className="bghost" style={{ marginTop: '18px' }}>Get directions on Google Maps →</a>
         </div>
       </section>
 

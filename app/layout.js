@@ -42,6 +42,7 @@ const schema = {
   },
   telephone: brand.phoneDisplay,
   url: 'https://www.ohuddental.com',
+  hasMap: brand.mapsLink,
   openingHours: 'Mo-Sa 11:00-21:00',
   priceRange: 'PKR',
   aggregateRating: {
