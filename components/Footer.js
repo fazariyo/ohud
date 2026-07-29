@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="foot-top">
           <div>
             <Link href="/" className="nlogo" style={{ textDecoration: 'none' }}>
-              <div className="nlm"><Logo /></div>
+              <div className="nlm"><Logo id="ohud-mark-footer" /></div>
               <div className="nltxt">
                 <span className="nlt">OHUD</span>
                 <span className="nls">Dental</span>
