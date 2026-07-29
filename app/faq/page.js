@@ -65,7 +65,7 @@ const groups = [
       { q: 'Are your materials halal?', a: 'We disclose the brand of every material before treatment and confirm its halal status on request. We will tell you what we know and, where a certificate exists, show it to you. See our materials page for the full picture.' },
       { q: 'Do you disclose the brands you use?', a: 'Yes — always, and before we begin. You can ask “What brand is this?” at any point and get a straight answer at the consultation, not after the work is done.' },
       { q: 'How do you sterilise?', a: 'Instruments are scrubbed, sealed in pouches, autoclaved with high-pressure steam, and opened in front of you. Single-use items like needles and gloves are never reused. You are welcome to see the sterilisation area any time — read the full protocol on our sterilisation page.' },
-      { q: 'Are your dentists registered with PMDC?', a: 'Yes. Our dentists are PMDC-verified and registered. You are welcome to ask about any clinician’s credentials.' },
+      { q: 'Is your dentist qualified and registered?', a: 'Yes. Ask to see the registration and qualification certificates at the clinic and we will show them to you without hesitation — we would rather you checked than took our word for it.' },
     ],
   },
   {

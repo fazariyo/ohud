@@ -85,7 +85,7 @@ const values = [
 const trust = [
   { icon: 'check', t: 'The price before you sit down', d: 'Every fee is posted on this site, and the written quote you receive is the bill you pay. Never more.' },
   { icon: 'heart', t: 'We say when you don’t need it', d: 'We refuse to recommend a procedure we wouldn’t accept from another dentist ourselves.' },
-  { icon: 'shield', t: 'Clean, qualified, careful', d: 'PMDC-verified dentists and hospital-grade sterilisation, every visit. Ask to see our sterilisation area any time.' },
+  { icon: 'shield', t: 'Clean, qualified, careful', d: 'An experienced dentist and hospital-grade sterilisation, every visit. Ask to see our sterilisation area any time.' },
   { icon: 'leaf', t: 'Halal materials, disclosed', d: 'We tell you the brand of every material before treatment and confirm its halal status on request.' },
   { icon: 'sparkle', t: 'A female dentist, on request', d: 'A female dentist and female assistant are available for any patient who would prefer one — just ask when you book.' },
   { icon: 'star', t: 'A free second opinion', d: 'Bring a plan or quote from any clinic and we’ll tell you honestly whether we’d recommend the same.' },
@@ -114,7 +114,16 @@ const learn = [
   { id: 4687906, tag: 'Honest Dentistry', title: 'How to choose a dentist in Lahore without getting overcharged', excerpt: 'The questions to ask, the red flags to watch for, and why a posted price list protects you.' },
 ];
 
-const leadDentist = team[0]; // Dr. Saad Mahmood — Founder & Lead Dentist
+const leadDentist = team[0]; // Dr. Syed Muhammad Ali — Lead Dentist
+
+// What we actually do differently, in the lead dentist's own practice (given by
+// the clinic 2026-07-29). Kept as plain capability statements, not superlatives.
+const leadUsps = [
+  { t: 'Strict hygiene', d: 'Sterilisation and infection control treated as non-negotiable, not a selling point.' },
+  { t: 'International protocols', d: 'Treatment done to recognised international standards, for results that last.' },
+  { t: 'Single-visit treatment', d: 'Finished in one appointment wherever it is safe to do so — fewer trips, less time off work.' },
+  { t: 'Consultant referral', d: 'Where a case calls for a specialist, we bring in a consultant for that treatment.' },
+];
 const mapsLink = brand.mapsLink;
 
 export default function Home() {
@@ -250,7 +259,7 @@ export default function Home() {
       </section>
 
       {/* F — LEAD DENTIST SPOTLIGHT */}
-      <section className="dentist" style={{ paddingTop: '110px' }}>
+      <section id="lead-dentist" className="dentist" style={{ paddingTop: '110px' }}>
         <div className="dentist-in">
           <div className="dentist-img rl">
             <Img id={leadDentist.photo} w={720} h={840} alt={`${leadDentist.name}, ${leadDentist.role} at Ohud Dental, Lahore`} />
@@ -259,10 +268,15 @@ export default function Home() {
             <div className="eyebrow gold"><span className="bar"></span>Meet Your Lead Dentist</div>
             <p className="dentist-quote">“From your first check-up to your final result, you are in steady, careful hands — and you will always hear the truth about what you do and don’t need.”</p>
             <p className="dentist-cred">{leadDentist.bio}</p>
+            <ul className="dentist-usps">
+              {leadUsps.map((u) => (
+                <li key={u.t}><strong>{u.t}</strong>{u.d}</li>
+              ))}
+            </ul>
             <div className="dentist-name">{leadDentist.name}</div>
             <div className="dentist-role">{leadDentist.role} · {leadDentist.pmdc}</div>
             <div style={{ marginTop: '26px' }}>
-              <Link href="/our-doctors/" className="bgold">Meet the whole team →</Link>
+              <Link href="/our-doctors/" className="bgold">More about Dr. Ali →</Link>
             </div>
           </div>
         </div>
@@ -309,27 +323,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* I — MEET THE TEAM */}
-      <section className="docs">
-        <div className="docs-in">
-          <div className="docs-head">
-            <div className="rl">
-              <div className="eyebrow teal"><span className="bar"></span>Our Dentists</div>
-              <h2 className="sec-h2">The team caring for you</h2>
-            </div>
-            <Link href="/our-doctors/" className="docs-link rr">Meet all our dentists →</Link>
-          </div>
-          <div className="docs-grid">
-            {team.slice(0, 4).map((d, i) => (
-              <Link key={i} href="/our-doctors/" className={`doc-card rv d${(i % 4) + 1}`}>
-                <div className="doc-card-img"><Img id={d.photo} w={600} h={720} alt={`${d.name}, ${d.role} at Ohud Dental, Lahore`} /></div>
-                <div className="doc-name">{d.name}</div>
-                <div className="doc-role">{d.role}</div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* I — (was MEET THE TEAM) Removed 2026-07-29: the clinic has one real
+          dentist, so a 4-up team grid would just repeat the lead-dentist
+          spotlight above. Reinstate this when there are real colleagues to
+          show — the .docs/.docs-grid styles are still in globals.css. */}
 
       {/* J — WHY PATIENTS TRUST OHUD */}
       <section className="promises" style={{ paddingTop: '110px' }}>
