@@ -3,8 +3,14 @@
 // stays crisp at every size and can sit on dark or light backgrounds.
 //
 // The tooth outline uses `currentColor`, so the parent controls it (.nlm sets
-// white, matching the artwork on the navy header/footer). The mountain is the
-// brand teal #318B8B — the CMYK C82 M29 Y49 K6 colour supplied by the clinic.
+// white, matching the artwork on the navy header/footer).
+//
+// The mountain is #069792 — sampled from the logo artwork itself, so the mark
+// reproduces the logo exactly. This is deliberately NOT the --teal token
+// (#318B8B, the CMYK C82 M29 Y49 K6 brand colour used everywhere else): the
+// supplied artwork is a slightly brighter teal than the print spec, and the
+// clinic chose to keep the mark faithful to the artwork. Don't "fix" this to
+// var(--teal) — it is an intentional difference.
 //
 // `id` must be unique per instance on a page: the clipPath is referenced by id,
 // and duplicate ids are invalid HTML.
@@ -34,7 +40,7 @@ export default function Logo({ id = 'ohud-mark' }) {
       <g clipPath={`url(#${id}-clip)`}>
         <path
           d="M2,120 L2,74 L22,52 L33,64 L50,28 L64,54 L74,46 L98,76 L98,120 Z"
-          fill="#318B8B"
+          fill="#069792"
         />
       </g>
       {/* Tooth outline drawn last so it covers the clipped edge cleanly. */}
