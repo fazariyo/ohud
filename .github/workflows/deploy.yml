@@ -16,6 +16,10 @@ concurrency:
   group: pages
   cancel-in-progress: false
 
+env:
+  # The custom domain this site is served from. Must match public/CNAME.
+  SITE_DOMAIN: ohuddental.com
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -29,16 +33,22 @@ jobs:
           node-version: 20
           cache: npm
 
-      # Injects basePath "/ohud" + unoptimized images into next.config for Pages.
+      # NOTE: deliberately no `static_site_generator: next` here.
+      # That input makes the action rewrite next.config with a basePath taken
+      # from the REPO NAME ("/ohud"). This site is served at the root of
+      # ohuddental.com, so that prefix made every /ohud/_next/*.css, *.js and
+      # /ohud/*/ page 404 — the site loaded as unstyled HTML with dead links.
+      # basePath is pinned in next.config.mjs instead; don't reintroduce it.
       - name: Configure Pages
         uses: actions/configure-pages@v5
-        with:
-          static_site_generator: next
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Build static site
+      # Runs `next build` then scripts/verify-export.mjs, which fails the job if
+      # any exported href/src points at a file that isn't in out/ — i.e. it
+      # catches a wrong basePath before it can ever reach the domain.
+      - name: Build and verify static site
         run: npm run build
 
       - name: Upload artifact
@@ -56,3 +66,56 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  # Proves the *live* domain actually renders, rather than trusting a green
+  # deploy. A 200 on the HTML means nothing if its stylesheet 404s.
+  smoke-test:
+    runs-on: ubuntu-latest
+    needs: deploy
+    steps:
+      - name: Check the live site serves its real CSS and JS
+        run: |
+          set -euo pipefail
+          DOMAIN="${SITE_DOMAIN}"
+
+          # HTTPS depends on GitHub provisioning a Let's Encrypt certificate for
+          # the domain, which can lag a first deploy by up to ~1 hour and is not
+          # something this repo controls. Warn on that, but still verify assets
+          # over plain HTTP so a broken basePath is always a hard failure.
+          SCHEME="https"
+          if ! curl -fsS -m 30 -o /dev/null "https://$DOMAIN/"; then
+            echo "::warning title=HTTPS not ready::https://$DOMAIN is not serving a valid certificate yet. In GitHub -> Settings -> Pages, confirm the custom domain is '$DOMAIN' and tick 'Enforce HTTPS' once the certificate finishes provisioning."
+            SCHEME="http"
+          fi
+
+          echo "Fetching $SCHEME://$DOMAIN/"
+          HTML=$(curl -fsSL -m 30 "$SCHEME://$DOMAIN/")
+
+          # Collect the page's own stylesheets and scripts.
+          ASSETS=$(printf '%s' "$HTML" \
+            | grep -oE '(href|src)="/[^"]*\.(css|js)"' \
+            | sed -E 's/^(href|src)="//; s/"$//' \
+            | sort -u)
+
+          if [ -z "$ASSETS" ]; then
+            echo "::error title=No assets found::The live HTML references no local CSS or JS at all. The export is almost certainly broken."
+            exit 1
+          fi
+
+          FAILED=0
+          while IFS= read -r asset; do
+            CODE=$(curl -s -o /dev/null -m 30 -w '%{http_code}' "$SCHEME://$DOMAIN$asset")
+            if [ "$CODE" = "200" ]; then
+              echo "  ok   $CODE  $asset"
+            else
+              echo "  FAIL $CODE  $asset"
+              FAILED=1
+            fi
+          done <<< "$ASSETS"
+
+          if [ "$FAILED" -ne 0 ]; then
+            echo "::error title=Live site is missing its assets::The deployed HTML points at CSS/JS that 404 on $DOMAIN, so visitors see an unstyled page. This is the basePath bug: check that 'static_site_generator: next' is absent from the Configure Pages step and that NEXT_PUBLIC_BASE_PATH is unset."
+            exit 1
+          fi
+
+          echo "✓ $SCHEME://$DOMAIN/ renders with all referenced assets returning 200."

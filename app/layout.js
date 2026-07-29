@@ -5,7 +5,9 @@ import WhatsAppFab from '@/components/WhatsAppFab';
 import { brand } from '@/lib/brand';
 
 export const metadata = {
-  metadataBase: new URL('https://www.ohuddental.com'),
+  // Apex, not www: GitHub Pages serves ohuddental.com and 301s www -> apex,
+  // so canonical/OG URLs must be the apex or they all point at a redirect.
+  metadataBase: new URL('https://ohuddental.com'),
   title: {
     default: 'Ohud Dental — Honest dentistry. Honoured prices. | Lahore',
     template: '%s | Ohud Dental, Lahore',
@@ -41,7 +43,7 @@ const schema = {
     addressCountry: 'PK',
   },
   telephone: brand.phoneDisplay,
-  url: 'https://www.ohuddental.com',
+  url: 'https://ohuddental.com',
   hasMap: brand.mapsLink,
   openingHours: 'Mo-Sa 11:00-21:00',
   priceRange: 'PKR',
@@ -65,6 +67,29 @@ export default function RootLayout({ children }) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+        {/*
+          Stylesheet-load guard. If globals.css 404s (the classic symptom of a
+          wrong basePath/assetPrefix on a custom domain) the page still returns
+          200 and renders as unstyled HTML, which is easy to miss. This turns
+          that silent failure into an obvious console error naming the exact
+          URL that failed, and tags <html data-css-failed="true"> so it can be
+          asserted from any browser check.
+        */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{
+  var probe=function(){
+    var v=getComputedStyle(document.documentElement).getPropertyValue('--ohud-css-loaded');
+    if(v&&v.trim())return;
+    document.documentElement.dataset.cssFailed='true';
+    var urls=[].map.call(document.querySelectorAll('link[rel="stylesheet"]'),function(l){return l.href});
+    console.error('[ohud] Stylesheet did not load — the page is rendering unstyled. Expected CSS at: '+(urls.join(', ')||'(no <link rel=stylesheet> found)')+'. Check basePath/assetPrefix: the site is served from the root of this domain, so asset URLs must not be prefixed with the repo name.');
+  };
+  if(document.readyState==='complete')probe();
+  else window.addEventListener('load',probe);
+}catch(e){}})();`,
+          }}
         />
       </head>
       <body>

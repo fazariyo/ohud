@@ -1,5 +1,10 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
+  /* Sentinel read by the inline guard in app/layout.js. If this variable is
+     missing at runtime, this stylesheet never loaded (usually a wrong
+     basePath/assetPrefix making /_next/*.css 404) and the page is rendering
+     as bare HTML. Keep it as the first declaration in :root. */
+  --ohud-css-loaded:1;
   /* Ohud Dental brand palette (Strategic Blueprint §3.8)
      Deep Navy #0F2C3F · Teal #1F6E7E · Warm Gold #B98841 · Sage #8AA68C
      Ivory #F2EFEA · Charcoal #2B2B2B · WhatsApp Green #25D366 (WA button only) */
