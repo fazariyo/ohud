@@ -13,7 +13,7 @@ export const metadata = {
     template: '%s | Ohud Dental, Lahore',
   },
   description:
-    'Ohud Dental is a dental clinic in Lahore built on honest, ethical care: every price published, no procedure you don’t need, a female dentist available on request, and a free second opinion. The dentist you would send your own family to.',
+    'Ohud Dental is a dental clinic in Lahore built on honest, ethical care: prices published not hidden, no procedure you don’t need, a female dentist available on request, and a free second opinion. The dentist you would send your own family to.',
   keywords: [
     'dentist Lahore', 'dental clinic Lahore', 'root canal price Lahore',
     'female dentist Lahore', 'honest dentist Lahore', 'posted dental prices Pakistan',
@@ -21,7 +21,7 @@ export const metadata = {
   openGraph: {
     title: 'Ohud Dental — Honest dentistry. Honoured prices.',
     description:
-      'Every price published. No procedure you don’t need. A free second opinion, a female dentist on request, and care for the whole family — in Lahore.',
+      'Our prices published, not hidden. No procedure you don’t need. A free second opinion, a female dentist on request, and care for the whole family — in Lahore.',
     type: 'website',
     locale: 'en_PK',
     siteName: 'Ohud Dental',
@@ -46,7 +46,9 @@ const schema = {
   url: 'https://ohuddental.com',
   hasMap: brand.mapsLink,
   openingHours: 'Mo-Sa 11:00-21:00',
-  priceRange: 'PKR',
+  // Spans the published rate sheet: cheapest priced item (a child's extraction)
+  // to the top of the clear-aligner range. Keep in step with lib/pricing.js.
+  priceRange: 'PKR 2,500 – 170,000',
   aggregateRating: {
     '@type': 'AggregateRating',
     ratingValue: brand.rating,

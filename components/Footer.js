@@ -16,7 +16,7 @@ export default function Footer() {
               </div>
             </Link>
             <p className="foot-desc">
-              Honest dentistry, gently delivered — in {brand.city}. Every price published,
+              Honest dentistry, gently delivered — in {brand.city}. Our prices published,
               no procedure you don’t need, and the same care for every patient who walks through our door.
             </p>
             <p className="foot-desc" style={{ marginTop: '14px' }}>

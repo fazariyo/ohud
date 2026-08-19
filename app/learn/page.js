@@ -16,7 +16,7 @@ const silos = [
     tag: 'Root Canal Knowledge Hub',
     cards: [
       { id: 16903641, tag: 'Root Canal', title: 'Do I really need a root canal?', excerpt: 'How to tell when a tooth genuinely needs treatment — and when a filling, or honest reassurance, is enough.' },
-      { id: 16430835, tag: 'Root Canal', title: 'How much should a root canal cost in Lahore?', excerpt: 'A fair range for front teeth and molars, and why a posted price protects you from being overcharged.' },
+      { id: 16430835, tag: 'Root Canal', title: 'How much should a root canal cost in Lahore?', excerpt: 'What a fair price looks like, why we charge the same for a molar as for a front tooth, and how a posted price protects you from being overcharged.' },
       { id: 6502305, tag: 'Root Canal', title: 'Root canal aftercare: what to expect', excerpt: 'The normal soreness, when to call us, and how a crown afterwards keeps the tooth working for years.' },
     ],
   },
@@ -44,7 +44,7 @@ const silos = [
     cards: [
       { id: 8224633, tag: 'Children', title: 'Your child’s first dental visit', excerpt: 'When to come, what happens, and how to make those first visits calm rather than frightening.' },
       { id: 8224633, tag: 'Children', title: 'Calming a frightened child', excerpt: 'Simple things that work, from us and from parents — so the chair stops being scary.' },
-      { id: 3845745, tag: 'Children', title: 'Sealants: cheap protection that works', excerpt: 'How a small, inexpensive sealant on new adult molars can prevent costly cavities later.' },
+      { id: 3845745, tag: 'Children', title: 'Sealants: quiet protection that works', excerpt: 'How a small sealant on new adult molars can spare your child a filling — or worse — years later.' },
     ],
   },
   {

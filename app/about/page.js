@@ -7,7 +7,7 @@ import { waLink, waDefault, brand } from '@/lib/brand';
 export const metadata = {
   title: 'Our Promise — About Ohud Dental, Lahore',
   description:
-    'Ohud Dental is honest dentistry, gently delivered: every price public, the quote is the invoice, no upselling, a free second opinion, a female dentist available on request, and a fixed share of revenue given to free care. This is our promise.',
+    'Ohud Dental is honest dentistry, gently delivered: prices public, the quote is the invoice, no upselling, a free second opinion, a female dentist available on request, and a fixed share of revenue given to free care. This is our promise.',
 };
 
 const values = [
@@ -67,7 +67,7 @@ export default function AboutPage() {
         <div className="prose-in">
           <h2>Honest dentistry, gently delivered.</h2>
           <p>That single line is our whole position. The clinic is calm and well kept, and the care feels considered — but the part that matters most is what sits underneath it. Our promise is not a feeling; it is a set of policies you can hold us to.</p>
-          <p>Every price is public, and the quote is the invoice — what we write down is what you pay, with nothing added at the chair. We do not upsell: if you do not need a treatment, we say so. We give a free second opinion to anyone holding another clinic’s quote. A fixed share of what we earn goes to free care for those who cannot afford it. A female dentist and assistant are available for anyone who prefers one. And we will name our materials and confirm their halal status whenever you ask. None of that is decoration. It is the brand.</p>
+          <p>Our prices are public, and the quote is the invoice — what we write down is what you pay, with nothing added at the chair. We do not upsell: if you do not need a treatment, we say so. We give a free second opinion to anyone holding another clinic’s quote. A fixed share of what we earn goes to free care for those who cannot afford it. A female dentist and assistant are available for anyone who prefers one. And we will name our materials and confirm their halal status whenever you ask. None of that is decoration. It is the brand.</p>
 
           <h2>The name “Ohud”</h2>
           <p>Ohud is named after a mountain — and we chose it for what a mountain stands for: strength and steadiness.</p>
@@ -95,7 +95,7 @@ export default function AboutPage() {
         <div className="svc-cta-glow"></div>
         <div className="svc-cta-in rv">
           <h2>See the promise for yourself.</h2>
-          <p>Every price is published, and the quote is the invoice. Look at what we charge, then come and meet us.</p>
+          <p>Our prices are published, and the quote is the invoice. Look at what we charge, then come and meet us.</p>
           <div className="svc-cta-ctas">
             <a href={waDefault} target="_blank" rel="noopener noreferrer" className="bwa">Book on WhatsApp →</a>
             <Link href="/pricing/" className="bghost">See all prices →</Link>

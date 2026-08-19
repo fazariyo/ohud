@@ -10,12 +10,20 @@ export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
 }
 
+// Prices like "Free", "Included" and "Ask when booking" are words, not figures,
+// so they render without the PKR prefix (and never with a "From" before it).
+const isWordPrice = (p) => /free|included|ask/i.test(p);
+
+// "15,000" → "PKR 15,000"; "Ask when booking" → "Ask when booking".
+const withCurrency = (p) => (isWordPrice(p) ? p : `PKR ${p}`);
+
 export function generateMetadata({ params }) {
   const s = bySlug[params.slug];
   if (!s) return {};
+  const figure = `${s.from && !isWordPrice(s.price) ? 'from ' : ''}${withCurrency(s.price)}`;
   return {
-    title: `${s.title} in Lahore — Price PKR ${s.price}`,
-    description: `${s.title} at Ohud Dental, Lahore. ${s.short} Posted price: PKR ${s.price}. Honest dentistry with prices explained upfront and no hidden charges.`,
+    title: `${s.title} in Lahore — ${isWordPrice(s.price) ? s.price : `Price ${figure}`}`,
+    description: `${s.title} at Ohud Dental, Lahore. ${s.short} Posted price: ${figure}. Honest dentistry with prices explained upfront and no hidden charges.`,
   };
 }
 
@@ -24,6 +32,7 @@ export default function ServicePage({ params }) {
   if (!s) notFound();
 
   const wa = waLink(`Hello — I’d like to ask about ${s.title} at Ohud Dental.`);
+  const wordPrice = isWordPrice(s.price);
 
   return (
     <>
@@ -43,8 +52,10 @@ export default function ServicePage({ params }) {
           <h1 className="svc-h1">{s.title}</h1>
           <p className="svc-lead">{s.lead}</p>
           <div style={{ display: 'inline-flex', alignItems: 'baseline', gap: '12px', marginTop: '28px', background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.14)', borderRadius: '12px', padding: '14px 22px' }}>
-            <span style={{ fontSize: '12px', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', color: 'var(--gold2)' }}>From</span>
-            <span style={{ fontFamily: 'var(--serif)', fontSize: '34px', fontWeight: 700, color: '#fff' }}><span style={{ fontSize: '15px', color: 'rgba(255,255,255,0.6)', marginRight: '4px' }}>PKR</span>{s.price}</span>
+            {s.from && !wordPrice && (
+              <span style={{ fontSize: '12px', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', color: 'var(--gold2)' }}>From</span>
+            )}
+            <span style={{ fontFamily: 'var(--serif)', fontSize: wordPrice ? '26px' : '34px', fontWeight: 700, color: '#fff' }}>{!wordPrice && <span style={{ fontSize: '15px', color: 'rgba(255,255,255,0.6)', marginRight: '4px' }}>PKR</span>}{s.price}</span>
             <span style={{ fontSize: '13px', fontWeight: 300, color: 'rgba(255,255,255,0.55)' }}>{s.priceNote}</span>
           </div>
           <div className="svc-hero-ctas">
@@ -117,8 +128,8 @@ export default function ServicePage({ params }) {
             {s.pricing.map((p, i) => (
               <div className="ptable-row" key={i}>
                 <div className="ptable-name">{p.name}</div>
-                <div className={`ptable-price${/free/i.test(p.price) ? ' free' : ''}`}>
-                  {/free|included/i.test(p.price) ? p.price : <><span className="cur">PKR</span>{p.price}</>}
+                <div className={`ptable-price${isWordPrice(p.price) ? ' free' : ''}`}>
+                  {isWordPrice(p.price) ? p.price : <><span className="cur">PKR</span>{p.price}</>}
                 </div>
               </div>
             ))}
@@ -187,7 +198,7 @@ export default function ServicePage({ params }) {
                   <div className="svc-rcard-body">
                     <h3>{r.nav}</h3>
                     <p>{r.short}</p>
-                    <span className="lnk">From PKR {r.price} →</span>
+                    <span className="lnk">{r.from && !isWordPrice(r.price) ? 'From ' : ''}{withCurrency(r.price)} →</span>
                   </div>
                 </Link>
               );

@@ -8,10 +8,11 @@ import { brand, waDefault, waLink } from '@/lib/brand';
 
 // ── Homepage hero stat cards (icon + value + label, four across) ──
 // NOTE: the "40+" and "5,000+" figures are illustrative placeholders. Confirm
-// the real numbers (or reword) with the clinical team before launch
-// (1 June 2026) — the clinic is newly opened, so "experience" reflects the
-// team's combined prior practice, not the clinic's age. Cards 3 & 4 are
-// deliberately word-values (honest — no invented rating).
+// the real numbers (or reword) with the clinical team — the clinic OPENED ON
+// 18 AUGUST 2026 (the blueprint's 1 June date slipped), so it is only weeks
+// old: "experience" here reflects the team's combined prior practice, not the
+// clinic's age, and "patients cared for" is not yet a real count. Cards 3 & 4
+// are deliberately word-values (honest — no invented rating).
 const heroStats = [
   { icon: 'clock', num: '10', label: 'Years of experience' },
   { icon: 'heart', num: '5,000+', label: 'Patients cared for' },
@@ -64,7 +65,8 @@ const journey = [
 // Before & after gallery — tabbed by treatment, like teethandgums.co.
 // NOTE: the image IDs below are STOCK PLACEHOLDERS. Real before/after photos
 // are only ever shown with the patient's written consent — swap these for
-// genuine, consented clinic results before launch (1 June 2026).
+// genuine, consented clinic results. The clinic opened 18 August 2026, so real
+// pairs will start to exist as treatments complete — these are overdue now.
 const results = [
   { key: 'veneers', label: 'Veneers', before: 5355694, after: 12934843, title: 'Veneers that still look like your own teeth', desc: 'Chips, gaps, and stubborn stains, corrected with thin shells shaped to suit your face — natural, never bulky or “obvious”.' },
   { key: 'whitening', label: 'Whitening', before: 5355715, after: 5622271, title: 'A brighter smile, safely', desc: 'Years of tea, coffee, and paan lifted with dentist-supervised whitening — your gums and enamel protected the whole way.' },
@@ -77,13 +79,13 @@ const results = [
 // (Reframed from the earlier values section: plain-language, no religious framing.)
 const values = [
   { principle: 'We only recommend what you truly need.', apply: 'No upselling, no invented problems. If a simple filling will do, we will not sell you a crown — and we will say so out loud, even when it means less work for us.' },
-  { principle: 'The price you are shown is the price you pay.', apply: 'Every fee is posted on this site, and the written quote you receive is the bill. Nothing is added once you are in the chair — not in an emergency, not ever.' },
+  { principle: 'The price you are shown is the price you pay.', apply: 'Our fees are posted on this site, and the written quote you receive is the bill. Nothing is added once you are in the chair — not in an emergency, not ever.' },
   { principle: 'A clean, careful clinic you can trust.', apply: 'Hospital-grade sterilisation, single-use items where needed, and clearly named, halal materials disclosed on request. Ask to see any of it, any time.' },
 ];
 
 // "Why patients trust Ohud Dental" — six honest reasons.
 const trust = [
-  { icon: 'check', t: 'The price before you sit down', d: 'Every fee is posted on this site, and the written quote you receive is the bill you pay. Never more.' },
+  { icon: 'check', t: 'The price before you sit down', d: 'Our fees are posted on this site, and the written quote you receive is the bill you pay. Never more.' },
   { icon: 'heart', t: 'We say when you don’t need it', d: 'We refuse to recommend a procedure we wouldn’t accept from another dentist ourselves.' },
   { icon: 'shield', t: 'Clean, qualified, careful', d: 'An experienced dentist and hospital-grade sterilisation, every visit. Ask to see our sterilisation area any time.' },
   { icon: 'leaf', t: 'Halal materials, disclosed', d: 'We tell you the brand of every material before treatment and confirm its halal status on request.' },
@@ -101,7 +103,7 @@ const stories = [
 
 // Short homepage FAQ — handles the common objections before booking.
 const faqs = [
-  { q: 'Will there be any hidden charges?', a: 'No. Every fee is published on this site and explained to you before treatment begins, and the written quote you receive is the invoice. Nothing is added once treatment starts — including in an emergency.' },
+  { q: 'Will there be any hidden charges?', a: 'No. Our fees are published on this site, every one is explained to you before treatment begins, and the written quote you receive is the invoice. Nothing is added once treatment starts — including in an emergency.' },
   { q: 'Will the treatment hurt?', a: 'We do not start until you are fully numb and comfortable. Most patients feel pressure rather than pain, and if numbing has ever been difficult for you, tell us and we’ll take extra time.' },
   { q: 'Can I get a female dentist?', a: 'Yes. A female dentist and female assistant are available for any patient who would prefer one — just mention it when you book on WhatsApp.' },
   { q: 'How do I book?', a: 'The fastest way is WhatsApp. Message us and our front desk replies within minutes during clinic hours with a time, the exact location, and clear next steps.' },

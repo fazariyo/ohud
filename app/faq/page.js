@@ -3,6 +3,7 @@ import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import Img from '@/components/Img';
 import { waLink, waDefault, brand } from '@/lib/brand';
+import { consultation } from '@/lib/pricing';
 
 export const metadata = {
   title: 'FAQ — Honest Answers, Plainly',
@@ -14,22 +15,23 @@ const groups = [
   {
     category: 'Prices & honesty',
     faqs: [
-      { q: 'Why do you publish your prices?', a: 'Because you have a right to know the cost before you walk in. Across Lahore, patients are quoted high and negotiated down, with the price hidden until the chair. We publish a fair, clear price for every treatment and explain it before we begin, so there is nothing to haggle and nothing to fear. You can see the full list on our pricing page.' },
+      { q: 'Why do you publish your prices?', a: 'Because you have a right to know the cost before you walk in. Across Lahore, patients are quoted high and negotiated down, with the price hidden until the chair. We publish a fair, clear price for our treatments and explain it before we begin, so there is nothing to haggle and nothing to fear. You can see the full list on our pricing page.' },
+      { q: 'Why do a few treatments say “ask when booking”?', a: 'Because we would rather post no number than one we might have to change. Flexible dentures and braces depend on the appliance and on your particular case, so a single posted figure would not be honest. Everything else on our list has a price on it. For those few, you get the exact figure in writing when you book — before anything begins, and never adjusted once you are in the chair.' },
       { q: 'Is the quote really the final price?', a: 'Yes. The price we quote you in writing is the price you pay. If a complex case ever needs an extra step, we explain it and price it in writing before we begin — never as a surprise added mid-treatment.' },
       { q: 'Why are you cheaper than the big clinics?', a: 'Because we publish one fair, clear price instead of quoting high and negotiating down. The materials and the standard of care do not change with the price tag — only the honesty of the price does.' },
       { q: 'Do you offer instalments?', a: 'Yes, for larger treatments like braces, implants, and full smile work. We explain the plan clearly, with no hidden mark-up for paying over time.' },
-      { q: 'Do prices include the consultation and X-ray?', a: 'Your first consultation and full examination are free, and a single digital X-ray is included with it. A full-mouth OPG X-ray, when genuinely needed, is PKR 2,500. Treatment prices are listed separately so you always know what each step costs.' },
-      { q: 'What if my case is complex?', a: 'We will tell you honestly, explain what is involved, and give you the full cost in writing before anything begins. A complex case might cost more than a simple one — for example a molar root canal (PKR 18,000) versus a front tooth (PKR 15,000) — but you will always know the figure first.' },
+      { q: 'Do prices include the consultation and X-ray?', a: consultation.free ? `Your first consultation and full examination are free, and a single digital X-ray is included with it. To be plain about it: we opened on ${consultation.openedOn} and the consultation is free for our first two months, up to ${consultation.freeUntil}. After that it is PKR ${consultation.standardPrice}, and we would rather you read that here than find out at the desk. A second opinion stays free either way. Treatment prices are listed separately so you always know what each step costs.` : `Your first consultation and full examination are PKR ${consultation.standardPrice}, and a single digital X-ray is included with it. A second opinion is free, always. Treatment prices are listed separately so you always know what each step costs.` },
+      { q: 'What if my case is complex?', a: 'We will tell you honestly, explain what is involved, and give you the full cost in writing before anything begins. A root canal is PKR 15,000 whether it is a straightforward front tooth or a difficult molar — we do not charge you more for a harder tooth. Where a price genuinely does vary, such as a surgical extraction at PKR 8,000 to 10,000, we publish the range and confirm the figure after the X-ray, before we start.' },
     ],
   },
   {
     category: 'Treatments & pain',
     faqs: [
-      { q: 'Does a root canal hurt?', a: 'The infection hurts — the treatment relieves it. Once the tooth is fully numb, most patients feel only mild pressure. If you have ever found numbing difficult, tell us and we will take extra time. A front-tooth root canal is PKR 15,000 and a molar PKR 18,000 — posted openly and explained before we begin.' },
+      { q: 'Does a root canal hurt?', a: 'The infection hurts — the treatment relieves it. Once the tooth is fully numb, most patients feel only mild pressure. If you have ever found numbing difficult, tell us and we will take extra time. A root canal is PKR 15,000, front tooth or molar — posted openly and explained before we begin.' },
       { q: 'Do I really need a root canal?', a: 'Sometimes a filling is enough, and sometimes a tooth is better extracted. We confirm with an X-ray and tell you honestly which it is — even when that means less work, and less money, for us.' },
-      { q: 'Does scaling damage or loosen teeth?', a: 'No. This is one of the most common myths in Pakistan. Scaling removes the hardened tartar that is actually harming your gums; healthy teeth are not affected. A scaling and polish is PKR 6,000.' },
-      { q: 'Are your fillings mercury-free?', a: 'Yes. We use tooth-coloured composite, not silver-mercury amalgam, unless you specifically request otherwise. A single-surface composite filling is PKR 2,500, and we name the brand before we start.' },
-      { q: 'Will you try to save my tooth before extracting it?', a: 'Always. Extraction is our last option, not our first. If a filling, root canal, or crown could keep the tooth, we will tell you. When a tooth genuinely cannot be saved, a simple extraction is PKR 2,000.' },
+      { q: 'Does scaling damage or loosen teeth?', a: 'No. This is one of the most common myths in Pakistan. Scaling removes the hardened tartar that is actually harming your gums; healthy teeth are not affected. A scaling and polish is PKR 5,000.' },
+      { q: 'Are your fillings mercury-free?', a: 'Yes. We use tooth-coloured composite, not silver-mercury amalgam, unless you specifically request otherwise. A tooth-coloured filling is PKR 5,000 to 6,000 depending on the size of the cavity, and we name the brand before we start.' },
+      { q: 'Will you try to save my tooth before extracting it?', a: 'Always. Extraction is our last option, not our first. If a filling, root canal, or crown could keep the tooth, we will tell you. When a tooth genuinely cannot be saved, a simple extraction is PKR 5,000.' },
       { q: 'Is whitening safe for my enamel?', a: 'Yes, when it is dentist-supervised at the right concentration. We protect your gums and manage sensitivity throughout — which is exactly what unregulated DIY kits and charcoal pastes do not do.' },
       { q: 'Will crowns and fillings whiten too?', a: 'No. Whitening only works on natural teeth, not on crowns, veneers, or fillings. We tell you this up front so there are no surprises about an uneven result.' },
     ],
@@ -127,7 +129,7 @@ export default function FaqPage() {
         <div className="svc-cta-glow"></div>
         <div className="svc-cta-in rv">
           <h2>Still have a question?</h2>
-          <p>Message us on WhatsApp and we will answer plainly. You can also see every treatment cost on our <Link href="/pricing/">price list</Link>, or get a free <Link href="/second-opinion/">second opinion</Link> on another clinic’s plan.</p>
+          <p>Message us on WhatsApp and we will answer plainly. You can also see our treatment costs on the <Link href="/pricing/">price list</Link>, or get a free <Link href="/second-opinion/">second opinion</Link> on another clinic’s plan.</p>
           <div className="svc-cta-ctas">
             <a href={waDefault} target="_blank" rel="noopener noreferrer" className="bwa">Ask us on WhatsApp →</a>
             <a href={`tel:${brand.phoneHref}`} className="bghost">Call {brand.phoneDisplay}</a>
