@@ -2,7 +2,8 @@ import Link from 'next/link';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import Img from '@/components/Img';
-import { priceList, consultation } from '@/lib/pricing';
+import Price from '@/components/Price';
+import { priceList, consultation, discountNote } from '@/lib/pricing';
 import { waDefault, waLink, brand } from '@/lib/brand';
 
 export const metadata = {
@@ -24,12 +25,12 @@ const disclaimers = [
   { h: 'The few we confirm in person', p: 'Flexible dentures and braces depend entirely on the appliance and the case, so we would rather not post a number we might have to change. Ask when you book and you get the exact figure in writing — before anything starts.' },
 ];
 
-// Prices like "Free", "Included" and "Ask when booking" are words, not figures,
-// so they render without the PKR prefix.
-const isWordPrice = (p) => /free|included|ask/i.test(p);
-
 export default function PricingPage() {
   const wa = waLink('Hello — I have a question about your prices / a quote from another clinic.');
+  // The worked example in the key is taken from the list itself rather than
+  // typed out again, so it can never advertise a pair of figures the table
+  // below no longer charges.
+  const sample = priceList.flatMap((c) => c.items).find((it) => it.was);
   return (
     <>
       <Nav base="/" />
@@ -52,27 +53,60 @@ export default function PricingPage() {
 
       <section className="psnap" style={{ background: '#fff' }}>
         <div className="psnap-in" style={{ maxWidth: '900px' }}>
-          {priceList.map((cat, ci) => (
-            <div className="pcat" key={ci}>
-              <div className="pcat-head">
-                <h2 className="pcat-title">{cat.category}</h2>
-                <p className="pcat-note">{cat.note}</p>
-              </div>
-              <div className="ptable">
-                {cat.items.map((it, i) => (
-                  <div className="ptable-row" key={i}>
-                    <div>
-                      <div className="ptable-name">{it.name}</div>
-                      <div className="ptable-desc">{it.desc}</div>
-                    </div>
-                    <div className={`ptable-price${isWordPrice(it.price) ? ' free' : ''}`}>
-                      {isWordPrice(it.price) ? it.price : <><span className="cur">PKR</span>{it.price}</>}
-                    </div>
-                  </div>
-                ))}
-              </div>
+          {/* What the two figures on every row mean, explained once here rather
+              than repeated inside all twenty-five of them. */}
+          <div className="prate-key">
+            <div className="prate-key-text">
+              <span className="prate-key-eyebrow">How to read these prices</span>
+              <p className="prate-key-copy">{discountNote.long}</p>
             </div>
-          ))}
+            {sample && (
+              <div className="prate-key-demo" aria-hidden="true">
+                <span className="prate-key-was">
+                  <s>PKR {sample.was}</s>
+                  <em>{discountNote.label}</em>
+                </span>
+                <span className="prate-key-arrow">&rarr;</span>
+                <span className="prate-key-now">
+                  <b>PKR {sample.price}</b>
+                  <em>{discountNote.payLabel}</em>
+                </span>
+              </div>
+            )}
+          </div>
+
+          {priceList.map((cat, ci) => {
+            // Only tables that actually carry a standard rate get the two money
+            // column headings — on an all-"Free" table they would be labelling
+            // an empty column.
+            const rated = cat.items.some((it) => it.was);
+            return (
+              <div className="pcat" key={ci}>
+                <div className="pcat-head">
+                  <h2 className="pcat-title">{cat.category}</h2>
+                  <p className="pcat-note">{cat.note}</p>
+                </div>
+                <div className={`ptable rates${rated ? '' : ' norates'}`}>
+                  {rated && (
+                    <div className="ptable-head">
+                      <span>Treatment</span>
+                      <span className="th-was">{discountNote.label}</span>
+                      <span className="th-now">{discountNote.payLabel}</span>
+                    </div>
+                  )}
+                  {cat.items.map((it, i) => (
+                    <div className="ptable-row" key={i}>
+                      <div className="ptable-main">
+                        <div className="ptable-name">{it.name}</div>
+                        <div className="ptable-desc">{it.desc}</div>
+                      </div>
+                      <Price price={it.price} was={it.was} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
 
           {/* Honest disclaimers */}
           <div className="pdisc">

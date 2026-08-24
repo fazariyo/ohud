@@ -3,19 +3,14 @@ import { notFound } from 'next/navigation';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import Img from '@/components/Img';
+import Price, { isWordPrice, withCurrency } from '@/components/Price';
 import { services, bySlug } from '@/lib/services';
+import { discountNote } from '@/lib/pricing';
 import { waLink, brand } from '@/lib/brand';
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
 }
-
-// Prices like "Free", "Included" and "Ask when booking" are words, not figures,
-// so they render without the PKR prefix (and never with a "From" before it).
-const isWordPrice = (p) => /free|included|ask/i.test(p);
-
-// "15,000" → "PKR 15,000"; "Ask when booking" → "Ask when booking".
-const withCurrency = (p) => (isWordPrice(p) ? p : `PKR ${p}`);
 
 export function generateMetadata({ params }) {
   const s = bySlug[params.slug];
@@ -33,6 +28,9 @@ export default function ServicePage({ params }) {
 
   const wa = waLink(`Hello — I’d like to ask about ${s.title} at Ohud Dental.`);
   const wordPrice = isWordPrice(s.price);
+  // A table of nothing but "Free"/"Ask when booking" rows has no standard-rate
+  // column to head, so it keeps the plain single-figure layout.
+  const rated = s.pricing.some((p) => p.was);
 
   return (
     <>
@@ -124,13 +122,24 @@ export default function ServicePage({ params }) {
             <h2 className="sec-h2">What it costs</h2>
             <p className="sec-lead ink" style={{ maxWidth: '560px', margin: '12px auto 0' }}>The price you see is the price you pay. Prices include consultation and any standard X-ray.</p>
           </div>
-          <div className="ptable">
+          {/* Same rate table as /pricing: the standard rate off the clinic's
+              sheet beside what the patient pays, rendered by the shared Price
+              component so the two pages cannot drift apart on it. */}
+          {rated && <p className="prate-hint">{discountNote.short}</p>}
+          <div className={`ptable rates${rated ? '' : ' norates'}`}>
+            {rated && (
+              <div className="ptable-head">
+                <span>Treatment</span>
+                <span className="th-was">{discountNote.label}</span>
+                <span className="th-now">{discountNote.payLabel}</span>
+              </div>
+            )}
             {s.pricing.map((p, i) => (
               <div className="ptable-row" key={i}>
-                <div className="ptable-name">{p.name}</div>
-                <div className={`ptable-price${isWordPrice(p.price) ? ' free' : ''}`}>
-                  {isWordPrice(p.price) ? p.price : <><span className="cur">PKR</span>{p.price}</>}
+                <div className="ptable-main">
+                  <div className="ptable-name">{p.name}</div>
                 </div>
+                <Price price={p.price} was={p.was} />
               </div>
             ))}
           </div>
